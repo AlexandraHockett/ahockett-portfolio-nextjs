@@ -3,8 +3,8 @@ import localFont from "next/font/local";
 import "./globals.css";
 import { ReactNode } from "react";
 import { ThemeProvider } from "@/components/Provider";
-import { FaHome } from "react-icons/fa";
 import { FloatingNav } from "@/components/ui/FloatingNav";
+import { navItems } from "@/data";
 
 const geistSans = localFont({
   src: "./fonts/GeistVF.woff",
@@ -30,9 +30,7 @@ const RootLayout = async ({ children }: { children: ReactNode }) => {
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
-        <FloatingNav
-          navItems={[{ name: "Home", link: "/", icon: <FaHome /> }]}
-        />
+        <FloatingNav navItems={navItems} />
         <ThemeProvider
           attribute="class"
           defaultTheme="dark"

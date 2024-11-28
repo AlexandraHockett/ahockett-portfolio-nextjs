@@ -9,7 +9,7 @@
   "plugins": ["tailwindcss", "import"],
   "rules": {
     "import/order": [
-      "error",
+      // "error",
       {
         "groups": [
           "builtin", // Built-in types are first

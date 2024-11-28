@@ -4,6 +4,8 @@ import { FlipWords } from "./ui/FlipWords";
 import MagicButton from "./ui/MagicButton";
 import { Spotlight } from "./ui/Spotlight";
 import { TextGenerateEffect } from "./ui/TextGenerateEffect";
+import Link from "next/link";
+
 const Hero = () => {
   return (
     <div className="pb-20 pt-36">
@@ -45,13 +47,13 @@ const Hero = () => {
               className="font-semibold"
             />
           </div>
-          <a href="#about">
+          <Link href="#about">
             <MagicButton
               title="Show my work"
               icon={<FaLocationArrow />}
               position="right"
             />
-          </a>
+          </Link>
         </div>
       </div>
     </div>

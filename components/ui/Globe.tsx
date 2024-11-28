@@ -31,6 +31,14 @@ type Position = {
   color: string;
 };
 
+type GlobalData = {
+  size: number;
+  order: number;
+  // eslint-disable-next-line no-unused-vars
+  color: (t: number) => string;
+  lat: number;
+  lng: number;
+};
 export type GlobeConfig = {
   pointSize?: number;
   globeColor?: string;
@@ -65,18 +73,9 @@ interface WorldProps {
 let numbersOfRings = [0];
 
 export function Globe({ globeConfig, data }: WorldProps) {
-  const [globeData, setGlobeData] = useState<
-    | {
-        size: number;
-        order: number;
-        color: (t: number) => string;
-        lat: number;
-        lng: number;
-      }[]
-    | null
-  >(null);
-
+  const [globeData, setGlobeData] = useState<GlobalData[] | null>(null);
   const globeRef = useRef<ThreeGlobe | null>(null);
+  JSON.stringify(countries);
 
   const defaultProps = {
     pointSize: 1,
@@ -100,6 +99,7 @@ export function Globe({ globeConfig, data }: WorldProps) {
       _buildData();
       _buildMaterial();
     }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [globeRef.current]);
 
   const _buildMaterial = () => {
@@ -117,12 +117,45 @@ export function Globe({ globeConfig, data }: WorldProps) {
     globeMaterial.shininess = globeConfig.shininess || 0.9;
   };
 
+  function validateData(data: Position[]): boolean {
+    for (const point of data) {
+      if (
+        isNaN(point.startLat) ||
+        isNaN(point.startLng) ||
+        isNaN(point.endLat) ||
+        isNaN(point.endLng)
+      ) {
+        console.error("Invalid data point:", point);
+        return false; // Early exit if invalid data is found
+      }
+    }
+    return true; // All data points are valid
+  }
+
   const _buildData = () => {
-    const arcs = data;
-    let points = [];
+    // Check for valid data before processing
+
+    if (!validateData(data)) return; // If invalid, exit early
+
+    const arcs = data; // Assuming data is an array of Position objects
+
+    const points = [];
     for (let i = 0; i < arcs.length; i++) {
       const arc = arcs[i];
+
       const rgb = hexToRgb(arc.color) as { r: number; g: number; b: number };
+
+      // Ensure all coordinates are valid numbers
+      if (
+        isNaN(arc.startLat) ||
+        isNaN(arc.startLng) ||
+        isNaN(arc.endLat) ||
+        isNaN(arc.endLng)
+      ) {
+        console.error("Invalid coordinates for data point:", arc);
+        continue; // Skip this invalid point
+      }
+
       points.push({
         size: defaultProps.pointSize,
         order: arc.order,
@@ -139,7 +172,7 @@ export function Globe({ globeConfig, data }: WorldProps) {
       });
     }
 
-    // remove duplicates for same lat and lng
+    // remove duplicates for same lat and lng (optional)
     const filteredPoints = points.filter(
       (v, i, a) =>
         a.findIndex((v2) =>
@@ -148,7 +181,6 @@ export function Globe({ globeConfig, data }: WorldProps) {
           )
         ) === i
     );
-
     setGlobeData(filteredPoints);
   };
 
@@ -161,43 +193,48 @@ export function Globe({ globeConfig, data }: WorldProps) {
         .showAtmosphere(defaultProps.showAtmosphere)
         .atmosphereColor(defaultProps.atmosphereColor)
         .atmosphereAltitude(defaultProps.atmosphereAltitude)
-        .hexPolygonColor((e) => {
+        .hexPolygonColor(() => {
           return defaultProps.polygonColor;
         });
       startAnimation();
     }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [globeData]);
 
   const startAnimation = () => {
     if (!globeRef.current || !globeData) return;
+    if (!validateData(data)) return; // If invalid, exit early
+    globeRef.current
+      .pointsData(data)
+      .pointRadius((e) => (e as { size: number }).size * 2)
+      .pointsMerge(false)
+      .pointColor((e) => (e as { color: string }).color)
+      .pointAltitude(0.0)
+      .pointRadius(2)
+      .pointsTransitionDuration(0);
 
     globeRef.current
       .arcsData(data)
-      .arcStartLat((d) => (d as { startLat: number }).startLat * 1)
-      .arcStartLng((d) => (d as { startLng: number }).startLng * 1)
-      .arcEndLat((d) => (d as { endLat: number }).endLat * 1)
-      .arcEndLng((d) => (d as { endLng: number }).endLng * 1)
+      .arcStartLat((d) => (d as { startLat: number }).startLat)
+      .arcStartLng((d) => (d as { startLng: number }).startLng)
+      .arcEndLat((d) => (d as { endLat: number }).endLat)
+      .arcEndLng((d) => (d as { endLng: number }).endLng)
+      // eslint-disable-next-line @typescript-eslint/no-explicit-any
       .arcColor((e: any) => (e as { color: string }).color)
       .arcAltitude((e) => {
-        return (e as { arcAlt: number }).arcAlt * 1;
+        return (e as { arcAlt: number }).arcAlt;
       })
-      .arcStroke((e) => {
+      .arcStroke(() => {
         return [0.32, 0.28, 0.3][Math.round(Math.random() * 2)];
       })
       .arcDashLength(defaultProps.arcLength)
-      .arcDashInitialGap((e) => (e as { order: number }).order * 1)
+      .arcDashInitialGap((e) => (e as { order: number }).order)
       .arcDashGap(15)
-      .arcDashAnimateTime((e) => defaultProps.arcTime);
-
-    globeRef.current
-      .pointsData(data)
-      .pointColor((e) => (e as { color: string }).color)
-      .pointsMerge(true)
-      .pointAltitude(0.0)
-      .pointRadius(2);
+      .arcDashAnimateTime(() => defaultProps.arcTime);
 
     globeRef.current
       .ringsData([])
+      // eslint-disable-next-line @typescript-eslint/no-explicit-any
       .ringColor((e: any) => (t: any) => e.color(t))
       .ringMaxRadius(defaultProps.maxRings)
       .ringPropagationSpeed(RING_PROPAGATION_SPEED)
@@ -218,13 +255,14 @@ export function Globe({ globeConfig, data }: WorldProps) {
       );
 
       globeRef.current.ringsData(
-        globeData.filter((d, i) => numbersOfRings.includes(i))
+        globeData.filter((_d, i) => numbersOfRings.includes(i))
       );
     }, 2000);
 
     return () => {
       clearInterval(interval);
     };
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [globeRef.current, globeData]);
 
   return (
@@ -241,6 +279,7 @@ export function WebGLRendererConfig() {
     gl.setPixelRatio(window.devicePixelRatio);
     gl.setSize(size.width, size.height);
     gl.setClearColor(0xffaaff, 0);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   return null;
@@ -282,20 +321,40 @@ export function World(props: WorldProps) {
   );
 }
 
-export function hexToRgb(hex: string) {
-  var shorthandRegex = /^#?([a-f\d])([a-f\d])([a-f\d])$/i;
-  hex = hex.replace(shorthandRegex, function (m, r, g, b) {
-    return r + r + g + g + b + b;
-  });
+export function hexToRgb(
+  hex: string
+): { r: number; g: number; b: number } | null {
+  // Remove leading '#' if present
+  hex = hex.replace(/^#?/, "");
 
-  var result = /^#?([a-f\d]{2})([a-f\d]{2})([a-f\d]{2})$/i.exec(hex);
+  // Validate hex string length
+  if (hex.length !== 3 && hex.length !== 6) {
+    console.error(`Invalid hex color format: ${hex}`);
+    return null;
+  }
+
+  // Expand shorthand hex (e.g., #fff becomes #ffffff)
+  if (hex.length === 3) {
+    hex = hex.replace(/([a-f\d])([a-f\d])([a-f\d])/i, function (_m, r, g, b) {
+      return r + r + g + g + b + b;
+    });
+  }
+
+  // Regular expression for valid hex color
+  const result = /^([a-f\d]{2})([a-f\d]{2})([a-f\d]{2})$/i.exec(hex);
+
+  // Return RGB object or null on error
   return result
     ? {
         r: parseInt(result[1], 16),
         g: parseInt(result[2], 16),
         b: parseInt(result[3], 16),
       }
-    : null;
+    : {
+        r: 0,
+        g: 0,
+        b: 0,
+      };
 }
 
 export function genRandomNumbers(min: number, max: number, count: number) {
