@@ -114,7 +114,7 @@ export const projects = [
 
 export const certificates = [
   {
-    title: "Alexandra's Introduction to Coding Certificate",
+    title: "SheCodes Basics",
     link: "https://www.shecodes.io/certificates/67bf8e29a72f0ed3fbbc8182892c91ba",
     imageUrl:
       "https://s3.amazonaws.com/shecodesio-production/students/certificates/000/034/246/original/34246.png?1713536544",
@@ -123,7 +123,7 @@ export const certificates = [
       "An introductory course covering the basics of web development, including HTML, CSS, and JavaScript.",
   },
   {
-    title: "Alexandra's Front End Development Certificate",
+    title: "SheCodes Plus",
     link: "https://www.shecodes.io/certificates/f92923ede3cb550b423dbe1cac2f4f6d",
     imageUrl:
       "https://s3.amazonaws.com/shecodesio-production/students/certificates/000/035/608/original/35608.png?1713554952",
@@ -132,7 +132,7 @@ export const certificates = [
       "Completed an advanced program focusing on modern front-end technologies and best practices.",
   },
   {
-    title: "Alexandra's Responsive Web Development Certificate",
+    title: "SheCodes Responsive",
     link: "https://www.shecodes.io/certificates/bcfcc457518b7725d6541e00a418d712",
     imageUrl:
       "https://s3.amazonaws.com/shecodesio-production/students/certificates/000/042/017/original/42017.png?1713537710",
@@ -141,7 +141,7 @@ export const certificates = [
       "Mastered techniques for creating responsive and mobile-first web designs.",
   },
   {
-    title: "Alexandra's React Certificate",
+    title: "SheCodes Advanced React Development",
     link: "https://www.shecodes.io/certificates/44fc432a69159fa02bae45245ef7af0d",
     imageUrl:
       "https://s3.amazonaws.com/shecodesio-production/students/certificates/000/049/007/original/49007.png?1713538731",
@@ -150,27 +150,71 @@ export const certificates = [
       "Gained expertise in React development, focusing on state management, hooks, and component-driven design.",
   },
   {
-    title: "Alexandra's Responsive Web Design Certificate",
+    title: "Responsive Web Design",
     link: "https://www.freecodecamp.org/certification/AlexandraHockett/responsive-web-design",
     imageUrl: "https://i.ibb.co/ckFSJ2N/Captura-de-ecr-2024-05-16-100856.png",
     issuer: "FreeCodeCamp",
     description:
       "Completed a detailed course on responsive web design, covering CSS grid, flexbox, and advanced layouts.",
   },
+  {
+    title: " The Modern React 18 Bootcamp - A Complete Developer Guide",
+    link: "https://udemy-certificate.s3.amazonaws.com/image/UC-f1f181b4-81d8-42cf-8b0e-40e24c1ab45b.jpg?v=1729781559000",
+    imageUrl:
+      "https://udemy-certificate.s3.amazonaws.com/image/UC-f1f181b4-81d8-42cf-8b0e-40e24c1ab45b.jpg?v=1729781559000",
+    issuer: "Udemy",
+    description:
+      "Mastered the latest features of React 18, focusing on creating scalable and efficient applications.",
+  },
+  {
+    title: "Complete Path to JavaScript Mastery",
+    link: "https://certificate.jsmastery.pro/verify/11f39ee82172",
+    imageUrl: "./JSMasteryCertificate-Javascript.png",
+    issuer: "JSMastery",
+    description:
+      "Completed a comprehensive course on modern JavaScript, covering advanced techniques and industry standards.",
+  },
+  {
+    title: "Volunteer",
+    link: "https://www.youtube.com/watch?v=ZCB4lbMCKos",
+    imageUrl: "./VolunteerCertificate.png",
+    issuer: "Web Summit",
+    description:
+      "Assisted attendees at the entrance and supported event operations, contributing to the smooth flow of one of the world’s leading tech conferences. Provided guidance, answered queries, and ensured a welcoming experience for participants.",
+  },
 ];
 
-export const companies = [
+export const issuer = [
   {
     id: 1,
-    name: "Happy Code Portugal",
-    img: "/cloud.svg",
-    nameImg: "/cloudName.svg",
+    name: "SheCodes",
+    img: "/SheCodes.png",
+    nameImg: "/SheCodes.png",
+  },
+
+  {
+    id: 4,
+    name: "WebSummit",
+    img: "/WebSummit.png",
+    nameImg: "/WebSummit.png",
+  },
+  {
+    id: 3,
+    name: "JSMastery",
+    img: "/JSMastery.png",
+    nameImg: "/JSMastery.png",
   },
   {
     id: 2,
-    name: "Web Summit",
-    img: "/app.svg",
-    nameImg: "/appName.svg",
+    name: "Udemy",
+    img: "/udemy.png",
+    nameImg: "/udemy.png",
+  },
+  {
+    id: 5,
+    name: "FreeCodeCamp",
+    img: "/freecodecamp.svg",
+    nameImg: "/freecodecamp.svg",
   },
 ];
 
