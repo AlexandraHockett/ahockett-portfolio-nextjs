@@ -225,7 +225,7 @@ export const workExperience = [
     company: "Happy Code Portugal",
     desc: "Completed a comprehensive review and optimization of the Flutter course, incorporating high-quality feedback to improve content clarity and effectively communicate concepts of padding and spacing. Successfully developed and implemented a React bootcamp curriculum tailored for teenagers, focusing on foundational web development skills and facilitating early-stage programming literacy. Enhanced educational resources at Happy Code Portugal by refining course explanations to ensure better understanding of core concepts, particularly in Flutter development.",
     className: "md:col-span-2",
-    thumbnail: "/exp1.svg",
+    thumbnail: "/exp1.png",
   },
   {
     id: 2,
@@ -233,7 +233,23 @@ export const workExperience = [
     company: "Web Summit",
     desc: "Assisted attendees at the entrance and supported event operations, contributing to the smooth flow of one of the world’s leading tech conferences. Provided guidance, answered queries, and ensured a welcoming experience for participants. Gained hands-on experience in event coordination and strengthened interpersonal and organizational skills in a dynamic environment.",
     className: "md:col-span-2", // change to md:col-span-2
-    thumbnail: "/exp2.svg",
+    thumbnail: "/exp2.png",
+  },
+  {
+    id: 3,
+    title: "Curricular Internship in Educational Technology",
+    company: "Happy Code Portugal",
+    desc: "Completed a comprehensive review and optimization of the Flutter course, incorporating high-quality feedback to improve content clarity and effectively communicate concepts of padding and spacing. Successfully developed and implemented a React bootcamp curriculum tailored for teenagers, focusing on foundational web development skills and facilitating early-stage programming literacy. Enhanced educational resources at Happy Code Portugal by refining course explanations to ensure better understanding of core concepts, particularly in Flutter development.",
+    className: "md:col-span-2",
+    thumbnail: "/exp3.png",
+  },
+  {
+    id: 4,
+    title: "Volunteer",
+    company: "Web Summit",
+    desc: "Assisted attendees at the entrance and supported event operations, contributing to the smooth flow of one of the world’s leading tech conferences. Provided guidance, answered queries, and ensured a welcoming experience for participants. Gained hands-on experience in event coordination and strengthened interpersonal and organizational skills in a dynamic environment.",
+    className: "md:col-span-2", // change to md:col-span-2
+    thumbnail: "/exp1.svg",
   },
 ];
 
