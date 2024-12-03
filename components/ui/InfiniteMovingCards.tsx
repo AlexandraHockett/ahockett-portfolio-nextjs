@@ -90,7 +90,8 @@ export const InfiniteMovingCards = ({
       >
         {items.map((item, idx) => (
           <li
-            className="w-[30vw] max-w-full relative rounded-2xl border border-b-0 flex-shrink-0 border-slate-800 p-5 md:p-10 sm:p-0 md:w-[30vw]"
+            className="w-[80vw] max-w-full relative rounded-2xl border border-b-0
+              border-slate-800 p-5 md:p-16 lg:w-[25vw] max-md:[30vw]"
             style={{
               background: "rgb(4,7,29)",
               backgroundColor:
@@ -102,16 +103,16 @@ export const InfiniteMovingCards = ({
               <img
                 src={item.imageUrl}
                 alt={item.title}
-                className="mb-0 rounded-lg w-full h-40 sm:h-64 object-contain sm:mb-4"
+                className="mb-0 rounded-lg w-full h-40 sm:h-64 object-contain"
               />
               <div className="flex flex-col gap-1 ">
-                <span className="text-sm font-semibold text-white hidden sm:block md:text-xl">
+                <span className="text-sm font-semibold text-white md:text-xl max-md:text-center max-md:mt-4 mt-6">
                   {item.title}
                 </span>
-                <span className="text-sm text-gray-400 mt-1 hidden sm:block">
+                <span className="text-sm text-gray-400 mt-1 max-md:text-center">
                   {item.issuer}
                 </span>
-                <span className="text-sm text-gray-300 mt-2 hidden sm:block">
+                <span className="text-sm text-gray-300 mt-2 hidden md:block">
                   {item.description}
                 </span>
               </div>

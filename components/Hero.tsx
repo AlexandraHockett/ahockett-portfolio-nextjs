@@ -34,12 +34,12 @@ const Hero = () => {
             words="Hi, I’m Alexandra. I craft dynamic and responsive WebSites"
           />
           <div className="mb-4 text-center text-sm md:text-lg md:tracking-wider lg:text-2xl">
-            Based in Portugal, I specialize in{" "}
+            Based in Portugal, I bring ideas to life with{" "}
             <FlipWords
               words={[
-                "ReactJS",
+                "React.js",
                 "Next.js",
-                "Vite",
+                "TypeScript",
                 "HTML5",
                 "CSS",
                 "JavaScript",

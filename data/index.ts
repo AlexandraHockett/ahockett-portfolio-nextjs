@@ -8,7 +8,7 @@ export const navItems = [
 export const gridItems = [
   {
     id: 1,
-    title: "I prioritize client collaboration, fostering open communication ",
+    title: "Collaborating closely with clients to bring their visions to life.",
     description: "",
     className: "lg:col-span-3 md:col-span-6 md:row-span-4 lg:min-h-[60vh]",
     imgClassName: "w-full h-full",
@@ -18,7 +18,7 @@ export const gridItems = [
   },
   {
     id: 2,
-    title: "I'm very flexible with time zone communications",
+    title: "Adaptable to your schedule, wherever you are in the world.",
     description: "",
     className: "lg:col-span-2 md:col-span-3 md:row-span-2",
     imgClassName: "",
@@ -28,8 +28,8 @@ export const gridItems = [
   },
   {
     id: 3,
-    title: "My tech stack",
-    description: "I constantly try to improve",
+    title: "A dynamic tech stack that keeps growing.",
+    description: "Always learning, always improving.",
     className: "lg:col-span-2 md:col-span-3 md:row-span-2",
     imgClassName: "",
     titleClassName: "justify-center",
@@ -38,7 +38,7 @@ export const gridItems = [
   },
   {
     id: 4,
-    title: "Tech enthusiast with a passion for development.",
+    title: "Tech enthusiast driven by curiosity and innovation.",
     description: "",
     className: "lg:col-span-2 md:col-span-3 md:row-span-1",
     imgClassName: "",
@@ -49,8 +49,8 @@ export const gridItems = [
 
   {
     id: 5,
-    title: "Currently building a JS Animation library",
-    description: "The Inside Scoop",
+    title: "Developing a cutting-edge JavaScript animation library.",
+    description: "Get a sneak peek at what’s coming next.",
     className: "md:col-span-3 md:row-span-2",
     imgClassName: "absolute right-0 bottom-0 md:w-96 w-60",
     titleClassName: "justify-center md:justify-start lg:justify-center",
@@ -59,7 +59,7 @@ export const gridItems = [
   },
   {
     id: 6,
-    title: "Do you want to start a project together?",
+    title: "Ready to bring your ideas to life? Let’s collaborate!",
     description: "",
     className: "lg:col-span-2 md:col-span-3 md:row-span-1",
     imgClassName: "",
@@ -73,43 +73,57 @@ export const projects = [
   {
     id: 1,
     title: "Recipe App",
-    des: "This app allows users to search for recipes, view ingredients, and get cooking instructions. Built with React, it offers a seamless user experience and interactive features.",
+    des: "Search for recipes, view ingredients, and get cooking instructions. Built with React for a seamless experience.",
     img: "/recipeApp.png",
-    iconLists: ["/re.svg", "/tail.svg", "/ts.svg", "/three.svg", "/fm.svg"],
+    iconLists: [
+      "/re.svg",
+      "/vite.svg",
+      "/ts.svg",
+      "/react-router.svg",
+      "/css3.svg",
+    ],
     link: "https://ahockett-recipeapp.netlify.app",
   },
   {
     id: 2,
     title: "3D Portfolio Project",
-    des: "This project was built using React and Three.js, showcasing a 3D portfolio experience. It demonstrates advanced web development techniques, including 3D graphics and interactive elements.",
+    des: "A 3D portfolio built with React and Three.js, showcasing web development and interactive design.",
     img: "/3dProject.png",
-    iconLists: ["/re.svg", "/tail.svg", "/ts.svg", "/three.svg", "/c.svg"],
+    iconLists: ["/re.svg", "/tail.svg", "/vite.svg", "/three.svg"],
     link: "https://alexhockett.netlify.app",
   },
   {
     id: 3,
     title: "My Cute Penguin",
-    des: "This project was created with HTML and CSS to showcase a cute penguin design. It’s a simple yet charming example of creative web design using fundamental web technologies.",
+    des: "A creative penguin design built with HTML and CSS, showcasing fundamental web design skills.",
     img: "/myCutePenguin.png",
-    iconLists: ["/re.svg", "/tail.svg", "/ts.svg", "/three.svg", "/c.svg"],
-    link: "https://alexhockett.netlify.app",
+    iconLists: ["/html.svg", "/css3.svg"],
+    link: "https://mycutepenguin.netlify.app",
   },
   {
     id: 4,
     title: "Dictionary App",
-    des: "Built with React and Bootstrap",
+    des: "React-based dictionary app with Bootstrap styling and API integration for real-time definitions.",
     img: "/dictionary.png",
-    iconLists: ["/next.svg", "/tail.svg", "/ts.svg", "/three.svg", "/gsap.svg"],
+    iconLists: ["/re.svg", "/bootstrap.png", "/axios.svg", "/javascript.svg"],
     link: "https://ahockettdictionary.netlify.app/",
   },
   {
     id: 5,
-    title: "Animated Apple Iphone 3D Website",
-    des: "Recreated the Apple iPhone 15 Pro website, combining GSAP animations and Three.js 3D effects..",
-    img: "/p4.svg",
-    iconLists: ["/next.svg", "/tail.svg", "/ts.svg", "/three.svg", "/gsap.svg"],
-    link: "https://github.com/adrianhajdin/iphone",
+    title: "Portfolio Website",
+    des: "A responsive portfolio with Next.js, featuring dynamic sections, animations, and 3D elements.",
+    img: "/portfolio.png",
+    iconLists: ["/next.svg", "/tail.svg", "/ts.svg", "/three.svg", "/fm.svg"],
+    link: "https://www.alexandrahockett.com",
   },
+  // {
+  //   id: 6,
+  //   title: "Animated Apple Iphone 3D Website",
+  //   des: "Recreated the Apple iPhone 15 Pro website, combining GSAP animations and Three.js 3D effects..",
+  //   img: "/p4.svg",
+  //   iconLists: ["/next.svg", "/tail.svg", "/ts.svg", "/three.svg", "/gsap.svg"],
+  //   link: "https://github.com/adrianhajdin/iphone",
+  // },
 ];
 
 export const certificates = [
@@ -257,13 +271,11 @@ export const socialMedia = [
   {
     id: 1,
     img: "/git.svg",
-  },
-  {
-    id: 2,
-    img: "/twit.svg",
+    link: "https://github.com/AlexandraHockett",
   },
   {
     id: 3,
     img: "/link.svg",
+    link: "https://www.linkedin.com/in/alexandra-hockett/",
   },
 ];
