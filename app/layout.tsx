@@ -19,9 +19,18 @@ const geistMono = localFont({
 });
 
 export const metadata: Metadata = {
-  title: "Alexandra - Front-End Developer Portfolio",
+  title:
+    "Alexandra Hockett | Front-End Developer Portfolio | React & Next.js Expert",
   description:
-    "Front-end developer with hospitality roots, specializing in React and Next.js. Transforming career through tech skills and passionate about creating innovative web solutions.",
+    "Professional front-end developer transforming from hospitality to tech. Expert in React, Next.js, and modern web technologies. Creating innovative digital solutions with a unique professional perspective.",
+  keywords:
+    "front-end developer, React developer, Next.js, web developer, portfolio, Alexandra Hockett",
+  openGraph: {
+    title: "Alexandra Hockett - Front-End Developer",
+    description:
+      "Professional front-end developer portfolio showcasing expertise in React and Next.js.",
+    images: [{ url: "/logo.svg" }],
+  },
 };
 
 const RootLayout = async ({ children }: { children: ReactNode }) => {

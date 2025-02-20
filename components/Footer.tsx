@@ -6,12 +6,12 @@ import { socialMedia } from "@/data";
 
 const Footer = () => {
   return (
-    <footer className="w-full pb-10 mb-[100px] md:mb-5" id="contact">
+    <footer className="w-full pb-10 mb-10 md:mb-5" id="contact">
       <div className="flex flex-col items-center">
         <h1 className="heading lg:max-w-[45vw]">
           Let’s build <span className="text-purple">something amazing</span>{" "}
           together!
-        </h1>{" "}
+        </h1>
         <p className="text-white-200 md:mt-10 my-5 text-center">
           Got a vision for your digital future? I’m here to make it happen. Drop
           me a message and let’s turn your ideas into reality!
@@ -26,7 +26,7 @@ const Footer = () => {
       </div>
       <div className="flex mt-16 md:flex-row flex-col justify-between items-center">
         <p className="md:text-base text-sm md:font-normal font-light">
-          Copyright © 2024 Alexandra
+          Copyright &copy; {new Date().getFullYear()} Alexandra
         </p>
 
         <div className="flex items-center md:gap-3 gap-6">
@@ -40,12 +40,28 @@ const Footer = () => {
                 target="_blank"
                 rel="noopener noreferrer"
               >
-                <img src={profile.img} alt="icons" width={20} height={20} />
+                <img
+                  src={profile.img}
+                  alt={`${profile.name} logo`} // updated alt text
+                  width={20}
+                  height={20}
+                />
               </Link>
             </div>
           ))}
         </div>
       </div>
+
+      {/* Add a footer credit line */}
+      <p className="text-sm text-gray-400 mt-4">
+        Developed by{" "}
+        <a
+          href="https://www.alexandrahockett.com/"
+          className="text-white hover:underline"
+        >
+          AHockett
+        </a>
+      </p>
     </footer>
   );
 };
