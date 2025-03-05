@@ -1,3 +1,5 @@
+import { link } from "fs";
+
 export const navItems = [
   { name: "About", link: "#about" },
   { name: "Projects", link: "#projects" },
@@ -13,7 +15,7 @@ export const gridItems = [
     className: "lg:col-span-3 md:col-span-6 md:row-span-4 lg:min-h-[60vh]",
     imgClassName: "w-full h-full",
     titleClassName: "justify-end",
-    img: "/b1.svg",
+    img: "/b1.webp",
     spareImg: "",
   },
   {
@@ -43,8 +45,8 @@ export const gridItems = [
     className: "lg:col-span-2 md:col-span-3 md:row-span-1",
     imgClassName: "",
     titleClassName: "justify-start",
-    img: "/grid.svg",
-    spareImg: "/b4.svg",
+    img: "/grid.webp",
+    spareImg: "/b4.webp",
   },
 
   {
@@ -54,8 +56,8 @@ export const gridItems = [
     className: "md:col-span-3 md:row-span-2",
     imgClassName: "absolute right-0 bottom-0 md:w-96 w-60",
     titleClassName: "justify-center md:justify-start lg:justify-center",
-    img: "/b5.svg",
-    spareImg: "/grid.svg",
+    img: "/b5.webp",
+    spareImg: "/grid.webp",
   },
   {
     id: 6,
@@ -74,13 +76,13 @@ export const projects = [
     id: 1,
     title: "Recipe App",
     des: "Search for recipes, view ingredients, and get cooking instructions. Built with React for a seamless experience.",
-    img: "/recipeApp.png",
+    img: "/recipeApp.webp",
     iconLists: [
-      "/re.svg",
-      "/vite.svg",
-      "/ts.svg",
-      "/react-router.svg",
-      "/css3.svg",
+      "/re.webp",
+      "/vite.webp",
+      "/ts.webp",
+      "/react-router.webp",
+      "/css3.webp",
     ],
     link: "https://ahockett-recipeapp.netlify.app",
   },
@@ -88,32 +90,37 @@ export const projects = [
     id: 2,
     title: "3D Portfolio Project",
     des: "A 3D portfolio built with React and Three.js, showcasing web development and interactive design.",
-    img: "/3dProject.png",
-    iconLists: ["/re.svg", "/tail.svg", "/vite.svg", "/three.svg"],
+    img: "/3dProject.webp",
+    iconLists: ["/re.webp", "/tail.webp", "/vite.webp", "/three.webp"],
     link: "https://alexhockett.netlify.app",
   },
   {
     id: 3,
     title: "My Cute Penguin",
     des: "A creative penguin design built with HTML and CSS, showcasing fundamental web design skills.",
-    img: "/myCutePenguin.png",
-    iconLists: ["/html.svg", "/css3.svg"],
+    img: "/myCutePenguin.webp",
+    iconLists: ["/html.webp", "/css3.webp"],
     link: "https://mycutepenguin.netlify.app",
   },
   {
     id: 4,
     title: "Dictionary App",
     des: "React-based dictionary app with Bootstrap styling and API integration for real-time definitions.",
-    img: "/dictionary.png",
-    iconLists: ["/re.svg", "/bootstrap.png", "/axios.svg", "/javascript.svg"],
+    img: "/dictionary.webp",
+    iconLists: [
+      "/re.webp",
+      "/bootstrap.webp",
+      "/axios.webp",
+      "/javascript.webp",
+    ],
     link: "https://ahockettdictionary.netlify.app/",
   },
   {
     id: 5,
     title: "Portfolio Website",
     des: "A responsive portfolio with Next.js, featuring dynamic sections, animations, and 3D elements.",
-    img: "/portfolio.png",
-    iconLists: ["/next.svg", "/tail.svg", "/ts.svg", "/three.svg", "/fm.svg"],
+    img: "/portfolio.webp",
+    iconLists: ["/next.webp", "/ts.webp", "/three.webp", "/fm.webp"],
     link: "https://www.alexandrahockett.com",
   },
   // {
@@ -130,8 +137,7 @@ export const certificates = [
   {
     title: "SheCodes Basics",
     link: "https://www.shecodes.io/certificates/67bf8e29a72f0ed3fbbc8182892c91ba",
-    imageUrl:
-      "https://s3.amazonaws.com/shecodesio-production/students/certificates/000/034/246/original/34246.png?1713536544",
+    imageUrl: "SheCodes-basics.webp",
     issuer: "SheCodes",
     description:
       "An introductory course covering the basics of web development, including HTML, CSS, and JavaScript.",
@@ -139,8 +145,7 @@ export const certificates = [
   {
     title: "SheCodes Plus",
     link: "https://www.shecodes.io/certificates/f92923ede3cb550b423dbe1cac2f4f6d",
-    imageUrl:
-      "https://s3.amazonaws.com/shecodesio-production/students/certificates/000/035/608/original/35608.png?1713554952",
+    imageUrl: "SheCodes-plus.webp",
     issuer: "SheCodes",
     description:
       "Completed an advanced program focusing on modern front-end technologies and best practices.",
@@ -148,8 +153,7 @@ export const certificates = [
   {
     title: "SheCodes Responsive",
     link: "https://www.shecodes.io/certificates/bcfcc457518b7725d6541e00a418d712",
-    imageUrl:
-      "https://s3.amazonaws.com/shecodesio-production/students/certificates/000/042/017/original/42017.png?1713537710",
+    imageUrl: "SheCodes-responsive.webp",
     issuer: "SheCodes",
     description:
       "Mastered techniques for creating responsive and mobile-first web designs.",
@@ -157,8 +161,7 @@ export const certificates = [
   {
     title: "SheCodes Advanced React Development",
     link: "https://www.shecodes.io/certificates/44fc432a69159fa02bae45245ef7af0d",
-    imageUrl:
-      "https://s3.amazonaws.com/shecodesio-production/students/certificates/000/049/007/original/49007.png?1713538731",
+    imageUrl: "SheCodesReact.webp",
     issuer: "SheCodes",
     description:
       "Gained expertise in React development, focusing on state management, hooks, and component-driven design.",
@@ -166,7 +169,7 @@ export const certificates = [
   {
     title: "Responsive Web Design",
     link: "https://www.freecodecamp.org/certification/AlexandraHockett/responsive-web-design",
-    imageUrl: "https://i.ibb.co/ckFSJ2N/Captura-de-ecr-2024-05-16-100856.png",
+    imageUrl: "freecodecamp-responsiveWebDesign.webp",
     issuer: "FreeCodeCamp",
     description:
       "Completed a detailed course on responsive web design, covering CSS grid, flexbox, and advanced layouts.",
@@ -174,8 +177,7 @@ export const certificates = [
   {
     title: " The Modern React 18 Bootcamp - A Complete Developer Guide",
     link: "https://udemy-certificate.s3.amazonaws.com/image/UC-f1f181b4-81d8-42cf-8b0e-40e24c1ab45b.jpg?v=1729781559000",
-    imageUrl:
-      "https://udemy-certificate.s3.amazonaws.com/image/UC-f1f181b4-81d8-42cf-8b0e-40e24c1ab45b.jpg?v=1729781559000",
+    imageUrl: "udemy-react18.webp",
     issuer: "Udemy",
     description:
       "Mastered the latest features of React 18, focusing on creating scalable and efficient applications.",
@@ -183,7 +185,7 @@ export const certificates = [
   {
     title: "Complete Path to JavaScript Mastery",
     link: "https://certificate.jsmastery.pro/verify/11f39ee82172",
-    imageUrl: "./JSMasteryCertificate-Javascript.png",
+    imageUrl: "JsMastery-JavaScript.webp",
     issuer: "JSMastery",
     description:
       "Completed a comprehensive course on modern JavaScript, covering advanced techniques and industry standards.",
@@ -191,7 +193,7 @@ export const certificates = [
   {
     title: "Volunteer",
     link: "https://www.youtube.com/watch?v=ZCB4lbMCKos",
-    imageUrl: "./VolunteerCertificate.png",
+    imageUrl: "VolunteerCertificate.webp",
     issuer: "Web Summit",
     description:
       "Assisted attendees at the entrance and supported event operations, contributing to the smooth flow of one of the world’s leading tech conferences. Provided guidance, answered queries, and ensured a welcoming experience for participants.",
@@ -202,33 +204,33 @@ export const issuer = [
   {
     id: 1,
     name: "SheCodes",
-    img: "/SheCodes.png",
-    nameImg: "/SheCodes.png",
+    img: "/SheCodes.webp",
+    nameImg: "/SheCodes.webp",
   },
 
   {
     id: 4,
     name: "WebSummit",
-    img: "/WebSummit.png",
-    nameImg: "/WebSummit.png",
+    img: "/WebSummit.webp",
+    nameImg: "/WebSummit.webp",
   },
   {
     id: 3,
     name: "JSMastery",
-    img: "/JSMastery.png",
-    nameImg: "/JSMastery.png",
+    img: "/JSMastery.webp",
+    nameImg: "/JSMastery.webp",
   },
   {
     id: 2,
     name: "Udemy",
-    img: "/udemy.png",
-    nameImg: "/udemy.png",
+    img: "/udemy.webp",
+    nameImg: "/udemy.webp",
   },
   {
     id: 5,
     name: "FreeCodeCamp",
-    img: "/freecodecamp.svg",
-    nameImg: "/freecodecamp.svg",
+    img: "/freecodecamp.webp",
+    nameImg: "/freecodecamp.webp",
   },
 ];
 
@@ -239,7 +241,7 @@ export const workExperience = [
     company: "Happy Code Portugal",
     desc: "Completed a comprehensive review and optimization of the Flutter course, incorporating high-quality feedback to improve content clarity and effectively communicate concepts of padding and spacing. Successfully developed and implemented a React bootcamp curriculum tailored for teenagers, focusing on foundational web development skills and facilitating early-stage programming literacy. Enhanced educational resources at Happy Code Portugal by refining course explanations to ensure better understanding of core concepts, particularly in Flutter development.",
     className: "md:col-span-2",
-    thumbnail: "/exp1.png",
+    thumbnail: "/exp1.webp",
   },
   {
     id: 2,
@@ -247,7 +249,7 @@ export const workExperience = [
     company: "Web Summit",
     desc: "Assisted attendees at the entrance and supported event operations, contributing to the smooth flow of one of the world’s leading tech conferences. Provided guidance, answered queries, and ensured a welcoming experience for participants. Gained hands-on experience in event coordination and strengthened interpersonal and organizational skills in a dynamic environment.",
     className: "md:col-span-2", // change to md:col-span-2
-    thumbnail: "/exp2.png",
+    thumbnail: "/exp2.webp",
   },
   // {
   //   id: 3,
@@ -270,13 +272,13 @@ export const workExperience = [
 export const socialMedia = [
   {
     id: 1,
-    img: "/git.svg",
+    img: "/git.webp",
     link: "https://github.com/AlexandraHockett",
     name: "Git Hub", // Add the name property here
   },
   {
     id: 3,
-    img: "/link.svg",
+    img: "/link.webp",
     link: "https://www.linkedin.com/in/alexandra-hockett/",
     name: "Linkedin",
   },
