@@ -40,11 +40,11 @@ const Hero = () => {
                 "React.js",
                 "Next.js",
                 "TypeScript",
-                "HTML5",
-                "CSS",
-                "JavaScript",
+                "Responsive Design",
+                "API Integration",
+                "Modern CSS",
               ]}
-              className="font-semibold"
+              className="font-semibold text-purple"
             />
           </div>
           <Link href="#about">

@@ -74,6 +74,38 @@ export const gridItems = [
 export const projects = [
   {
     id: 1,
+    title: "Professional Services Website",
+    des: "Advanced business website featuring conversion optimization, multilingual support (PT/EN), Schema SEO, GSAP animations, performance optimization, and lead generation systems. Built for Portuguese market with international reach.",
+    img: "/ahockett.webp",
+    iconLists: [
+      "/next.webp", // Next.js 14
+      "/ts.webp", // TypeScript
+      "/gsap.webp", // GSAP animations
+      "/fm.webp", // Framer Motion
+      "/tail.webp", // Tailwind CSS
+      "/i18n.webp", // Internationalization (PT/EN)
+      "/seo.webp", // Advanced SEO + Schema
+      "/analytics.webp", // Analytics & conversion tracking
+      "/performance.webp", // Core Web Vitals optimization
+    ],
+    link: "https://ahockett.com",
+  },
+  {
+    id: 2,
+    title: "MentorAI - AI Teaching Platform",
+    des: "Full-stack SaaS platform with real-time AI voice tutoring, user authentication, subscriptions, and dynamic content management.",
+    img: "/mentor-ai.webp", // You'll need to create this
+    iconLists: [
+      "/next.webp",
+      "/ts.webp",
+      "/supabase.webp", // or database icon
+      "/clerk.webp", // or auth icon
+      "/ai.webp", // AI/voice icon
+    ],
+    link: "https://ahockett-saas-project.vercel.app/", // When deployed
+  },
+  {
+    id: 3,
     title: "Recipe App",
     des: "Search for recipes, view ingredients, and get cooking instructions. Built with React for a seamless experience.",
     img: "/recipeApp.webp",
@@ -87,7 +119,7 @@ export const projects = [
     link: "https://ahockett-recipeapp.netlify.app",
   },
   {
-    id: 2,
+    id: 4,
     title: "3D Portfolio Project",
     des: "A 3D portfolio built with React and Three.js, showcasing web development and interactive design.",
     img: "/3dProject.webp",
@@ -95,7 +127,7 @@ export const projects = [
     link: "https://alexhockett.netlify.app",
   },
   {
-    id: 3,
+    id: 5,
     title: "My Cute Penguin",
     des: "A creative penguin design built with HTML and CSS, showcasing fundamental web design skills.",
     img: "/myCutePenguin.webp",
@@ -103,7 +135,7 @@ export const projects = [
     link: "https://mycutepenguin.netlify.app",
   },
   {
-    id: 4,
+    id: 6,
     title: "Dictionary App",
     des: "React-based dictionary app with Bootstrap styling and API integration for real-time definitions.",
     img: "/dictionary.webp",
@@ -115,14 +147,7 @@ export const projects = [
     ],
     link: "https://ahockettdictionary.netlify.app/",
   },
-  {
-    id: 5,
-    title: "Portfolio Website",
-    des: "A responsive portfolio with Next.js, featuring dynamic sections, animations, and 3D elements.",
-    img: "/portfolio.webp",
-    iconLists: ["/next.webp", "/ts.webp", "/three.webp", "/fm.webp"],
-    link: "https://www.alexandrahockett.com",
-  },
+
   // {
   //   id: 6,
   //   title: "Animated Apple Iphone 3D Website",
@@ -239,7 +264,7 @@ export const workExperience = [
     id: 1,
     title: "Curricular Internship in Educational Technology",
     company: "Happy Code Portugal",
-    desc: "Completed a comprehensive review and optimization of the Flutter course, incorporating high-quality feedback to improve content clarity and effectively communicate concepts of padding and spacing. Successfully developed and implemented a React bootcamp curriculum tailored for teenagers, focusing on foundational web development skills and facilitating early-stage programming literacy. Enhanced educational resources at Happy Code Portugal by refining course explanations to ensure better understanding of core concepts, particularly in Flutter development.",
+    desc: "Developed and implemented a comprehensive 8-lesson React.js bootcamp curriculum for teenagers, covering fundamentals from JSX and components to advanced topics like state management with useState hook, React Router navigation, and component architecture best practices. Created complete educational materials including step-by-step guides, interactive exercises, and practical projects culminating in a fully functional website with contact forms and dynamic navigation. Additionally, conducted thorough review and optimization of the Flutter course curriculum, incorporating high-quality feedback to improve content clarity and enhance explanations of core concepts including padding, spacing, and UI development principles.",
     className: "md:col-span-2",
     thumbnail: "/exp1.webp",
   },
@@ -250,6 +275,16 @@ export const workExperience = [
     desc: "Assisted attendees at the entrance and supported event operations, contributing to the smooth flow of one of the world’s leading tech conferences. Provided guidance, answered queries, and ensured a welcoming experience for participants. Gained hands-on experience in event coordination and strengthened interpersonal and organizational skills in a dynamic environment.",
     className: "md:col-span-2", // change to md:col-span-2
     thumbnail: "/exp2.webp",
+  },
+  {
+    id: 3,
+    title: "Freelance Web Developer & Founder",
+    company: "AHockett.com",
+    desc: "Founded and developed ahockett.com, providing professional web development services specializing in custom websites, web applications, and e-commerce solutions. Built high-performance, responsive websites using modern technologies including Next.js, React, TypeScript, GSAP, and Framer Motion. Focused on creating pixel-perfect designs with cinematic animations and conversion-optimized user experiences for business clients.",
+    className: "md:col-span-2",
+    thumbnail: "/videos/ahockett-logo.mp4", // 🎥 Caminho para o teu vídeo MP4
+    isVideo: true, // ✅ Flag para identificar que é vídeo
+    fallbackImage: "/exp3.webp", // 🔄 Imagem de fallback caso o vídeo não funcione
   },
   // {
   //   id: 3,
