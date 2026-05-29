@@ -1,16 +1,24 @@
 "use client";
 
 import Image from "next/image";
+import dynamic from "next/dynamic";
+import { useState, useEffect } from "react";
 
 import { cn } from "@/lib/utils";
 
 import { BackgroundGradientAnimation } from "./BackgroundGradientAnimation";
-import { useState } from "react";
 import animationData from "@/data/confetti.json";
-import Lottie from "lottie-react";
 import MagicButton from "./MagicButton";
 import { IoCopyOutline } from "react-icons/io5";
 import { GridGlobe } from "./GridGlobe";
+
+// Dynamic import do Lottie sem SSR
+const Lottie = dynamic(() => import("lottie-react"), {
+  ssr: false,
+  loading: () => (
+    <div className="h-16 w-16 animate-pulse bg-purple-500/20 rounded-lg" />
+  ),
+});
 
 export const BentoGrid = ({
   className,
@@ -51,10 +59,18 @@ export const BentoGridItem = ({
   spareImg?: string;
 }) => {
   const [copied, setCopied] = useState(false);
-  const handleCopy = () => {
-    navigator.clipboard.writeText("contact@alexandrahockett.com");
+  const [isClient, setIsClient] = useState(false);
 
-    setCopied(true);
+  // Verificar se estamos no client-side
+  useEffect(() => {
+    setIsClient(true);
+  }, []);
+
+  const handleCopy = () => {
+    if (typeof navigator !== "undefined") {
+      navigator.clipboard.writeText("alexandra@ahockett.com");
+      setCopied(true);
+    }
   };
 
   return (
@@ -88,7 +104,6 @@ export const BentoGridItem = ({
             <img
               src={spareImg}
               alt={spareImg}
-              //   width={220}
               className="object-cover object-center w-full h-full"
             />
           )}
@@ -145,14 +160,16 @@ export const BentoGridItem = ({
           {id === 6 && (
             <div className="mt-5 relative">
               <div className={`absolute -bottom-5 right-0`}>
-                <Lottie
-                  animationData={animationData}
-                  loop={copied}
-                  autoplay={copied}
-                  rendererSettings={{
-                    preserveAspectRatio: "xMidYMid slice",
-                  }}
-                />
+                {isClient && (
+                  <Lottie
+                    animationData={animationData}
+                    loop={copied}
+                    autoplay={copied}
+                    rendererSettings={{
+                      preserveAspectRatio: "xMidYMid slice",
+                    }}
+                  />
+                )}
               </div>
               <MagicButton
                 title={copied ? "Email copied" : "Copy my Email"}

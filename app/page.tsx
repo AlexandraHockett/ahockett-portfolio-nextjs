@@ -5,6 +5,7 @@ import Footer from "@/components/Footer";
 import Grid from "@/components/Grid";
 import Hero from "@/components/Hero";
 import RecentProjects from "@/components/RecentProjects";
+import ZaraCompanion from "@/components/ZaraCompanion";
 
 export default function Home() {
   return (
@@ -18,6 +19,7 @@ export default function Home() {
         <Approach />
         <Footer />
       </div>
+      <ZaraCompanion />
     </main>
   );
 }

@@ -16,7 +16,7 @@ const Footer = () => {
           Got a vision for your digital future? I’m here to make it happen. Drop
           me a message and let’s turn your ideas into reality!
         </p>
-        <a href="mailto:contact@alexandrahockett.com">
+        <a href="mailto:alexandra@ahockett.com">
           <MagicButton
             title="Let's get in touch!"
             icon={<FaLocationArrow />}

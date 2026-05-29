@@ -1,5 +1,3 @@
-import { link } from "fs";
-
 export const navItems = [
   { name: "About", link: "#about" },
   { name: "Projects", link: "#projects" },
@@ -73,7 +71,76 @@ export const gridItems = [
 
 export const projects = [
   {
+    id: 0,
+    title: "JobAgent AI — Personal Career Assistant",
+    des: "Full-stack AI-powered personal career assistant. Features automatic CV matching with score breakdown, AI-tailored CV generation preserving original design, streaming cover letter generation, LinkedIn profile optimizer, and mock interview questions — all powered by Claude AI. Built for personal use with authenticated access.",
+    img: "/jobagent.jpg",
+    isPrivate: true,
+    iconLists: [
+      "https://skillicons.dev/icons?i=nextjs",
+      "https://skillicons.dev/icons?i=react",
+      "https://skillicons.dev/icons?i=ts",
+      "https://skillicons.dev/icons?i=tailwind",
+      "https://skillicons.dev/icons?i=prisma",
+      "https://skillicons.dev/icons?i=postgres",
+      "https://skillicons.dev/icons?i=vercel",
+    ],
+    link: "https://job-agent-ahockett.vercel.app",
+  },
+  {
     id: 1,
+    title: "Code AI Studio — AI SaaS Platform",
+    des: "SaaS platform with 20+ AI models for generating professional images and videos. Features Avatar Creator with consistent character identity, credit-based billing with Stripe, a gamified AI Companion, and a full admin panel — all in one product.",
+    img: "/codeaistudio.png",
+    isVideo: true,
+    videoSrc: "/videos/CODE_AI_STUDIO_AVATAR_1_EN.mp4",
+    iconLists: [
+      "https://skillicons.dev/icons?i=nextjs",
+      "https://skillicons.dev/icons?i=react",
+      "https://skillicons.dev/icons?i=ts",
+      "https://skillicons.dev/icons?i=tailwind",
+      "https://skillicons.dev/icons?i=prisma",
+      "https://skillicons.dev/icons?i=postgres",
+      "https://skillicons.dev/icons?i=vercel",
+    ],
+    link: "https://codeaistudio.com",
+  },
+  {
+    id: 2,
+    title: "Coutale Portugal — E-commerce & B2B Platform",
+    des: "Full e-commerce platform for Coutale Portugal — a premium wine accessories brand. Includes category filtering, custom product personalisation editor, admin dashboard, Stripe checkout, transactional emails, and support for 3 languages (PT/EN/ES).",
+    img: "/coutale-logo.png",
+    isVideo: true,
+    videoSrc: "/videos/sample_coutale.mp4",
+    iconLists: [
+      "https://skillicons.dev/icons?i=nextjs",
+      "https://skillicons.dev/icons?i=react",
+      "https://skillicons.dev/icons?i=ts",
+      "https://skillicons.dev/icons?i=tailwind",
+      "https://skillicons.dev/icons?i=supabase",
+      "https://skillicons.dev/icons?i=firebase",
+      "https://skillicons.dev/icons?i=vercel",
+    ],
+    link: "https://coutaleportugal.vercel.app/pt",
+  },
+  {
+    id: 3,
+    title: "BadCompany — Events Platform",
+    des: "Full-stack web platform for BadCompany — featuring a public-facing site, e-commerce store, and custom admin dashboard. Includes role-based authentication, rich-text content editor, newsletter system with open tracking, Cloudinary media management, and interactive maps. Deployed and live in production.",
+    img: "/bc.webp",
+    iconLists: [
+      "https://skillicons.dev/icons?i=nextjs",
+      "https://skillicons.dev/icons?i=react",
+      "https://skillicons.dev/icons?i=ts",
+      "https://skillicons.dev/icons?i=tailwind",
+      "https://skillicons.dev/icons?i=prisma",
+      "https://skillicons.dev/icons?i=postgres",
+      "https://skillicons.dev/icons?i=cloudinary",
+    ],
+    link: "https://ahockett-badcompany.vercel.app",
+  },
+  {
+    id: 4,
     title: "Professional Services Website",
     des: "Advanced business website featuring conversion optimization, multilingual support (PT/EN), Schema SEO, GSAP animations, performance optimization, and lead generation systems. Built for Portuguese market with international reach.",
     img: "/ahockett.webp",
@@ -91,71 +158,19 @@ export const projects = [
     link: "https://ahockett.com",
   },
   {
-    id: 2,
+    id: 5,
     title: "MentorAI - AI Teaching Platform",
     des: "Full-stack SaaS platform with real-time AI voice tutoring, user authentication, subscriptions, and dynamic content management.",
-    img: "/mentor-ai.webp", // You'll need to create this
+    img: "/mentor-ai.webp",
     iconLists: [
       "/next.webp",
       "/ts.webp",
-      "/supabase.webp", // or database icon
-      "/clerk.webp", // or auth icon
-      "/ai.webp", // AI/voice icon
+      "/supabase.webp",
+      "/clerk.webp",
+      "/ai.webp",
     ],
-    link: "https://ahockett-saas-project.vercel.app/", // When deployed
+    link: "https://ahockett-saas-project.vercel.app/",
   },
-  {
-    id: 3,
-    title: "Recipe App",
-    des: "Search for recipes, view ingredients, and get cooking instructions. Built with React for a seamless experience.",
-    img: "/recipeApp.webp",
-    iconLists: [
-      "/re.webp",
-      "/vite.webp",
-      "/ts.webp",
-      "/react-router.webp",
-      "/css3.webp",
-    ],
-    link: "https://ahockett-recipeapp.netlify.app",
-  },
-  {
-    id: 4,
-    title: "3D Portfolio Project",
-    des: "A 3D portfolio built with React and Three.js, showcasing web development and interactive design.",
-    img: "/3dProject.webp",
-    iconLists: ["/re.webp", "/tail.webp", "/vite.webp", "/three.webp"],
-    link: "https://alexhockett.netlify.app",
-  },
-  {
-    id: 5,
-    title: "My Cute Penguin",
-    des: "A creative penguin design built with HTML and CSS, showcasing fundamental web design skills.",
-    img: "/myCutePenguin.webp",
-    iconLists: ["/html.webp", "/css3.webp"],
-    link: "https://mycutepenguin.netlify.app",
-  },
-  {
-    id: 6,
-    title: "Dictionary App",
-    des: "React-based dictionary app with Bootstrap styling and API integration for real-time definitions.",
-    img: "/dictionary.webp",
-    iconLists: [
-      "/re.webp",
-      "/bootstrap.webp",
-      "/axios.webp",
-      "/javascript.webp",
-    ],
-    link: "https://ahockettdictionary.netlify.app/",
-  },
-
-  // {
-  //   id: 6,
-  //   title: "Animated Apple Iphone 3D Website",
-  //   des: "Recreated the Apple iPhone 15 Pro website, combining GSAP animations and Three.js 3D effects..",
-  //   img: "/p4.svg",
-  //   iconLists: ["/next.svg", "/tail.svg", "/ts.svg", "/three.svg", "/gsap.svg"],
-  //   link: "https://github.com/adrianhajdin/iphone",
-  // },
 ];
 
 export const certificates = [
@@ -278,13 +293,13 @@ export const workExperience = [
   },
   {
     id: 3,
-    title: "Freelance Web Developer & Founder",
+    title: "Freelance Full Stack Developer & Founder",
     company: "AHockett.com",
-    desc: "Founded and developed ahockett.com, providing professional web development services specializing in custom websites, web applications, and e-commerce solutions. Built high-performance, responsive websites using modern technologies including Next.js, React, TypeScript, GSAP, and Framer Motion. Focused on creating pixel-perfect designs with cinematic animations and conversion-optimized user experiences for business clients.",
+    desc: "Founded and developed ahockett.com, delivering full-stack web and AI-powered solutions for clients. Built Code AI Studio — a production SaaS platform integrating 25+ AI models with credit-based monetisation and GDPR compliance. Developed Coutale Portugal — a full e-commerce & B2B platform with a custom laser engraving canvas editor, automated invoicing, and multi-payment support. Specialises in Next.js, TypeScript, SaaS architecture, AI integrations, and conversion-optimised user experiences.",
     className: "md:col-span-2",
-    thumbnail: "/videos/ahockett-logo.mp4", // 🎥 Caminho para o teu vídeo MP4
-    isVideo: true, // ✅ Flag para identificar que é vídeo
-    fallbackImage: "/exp3.webp", // 🔄 Imagem de fallback caso o vídeo não funcione
+    thumbnail: "/videos/ahockett-logo.mp4",
+    isVideo: true,
+    fallbackImage: "/exp3.webp",
   },
   // {
   //   id: 3,

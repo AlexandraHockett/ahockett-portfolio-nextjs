@@ -26,8 +26,8 @@ const Hero = () => {
       </div>
       <div className="relative my-20 flex justify-center">
         <div className="flex max-w-[89vw] flex-col items-center justify-center md:max-w-2xl lg:max-w-[60vw]">
-          <h2 className="max-w-80 text-center text-xs uppercase tracking-widest text-blue-100 ">
-            Welcome to My Portfolio
+          <h2 className="text-center text-xs uppercase tracking-widest text-blue-100 whitespace-nowrap">
+            Full Stack Developer | AI Integration Specialist
           </h2>
           <TextGenerateEffect
             className="text-center text-[40px] md:text-5xl lg:text-6xl"
@@ -40,9 +40,9 @@ const Hero = () => {
                 "React.js",
                 "Next.js",
                 "TypeScript",
-                "Responsive Design",
-                "API Integration",
-                "Modern CSS",
+                "AI Integration",
+                "Full Stack Dev",
+                "SaaS Platforms",
               ]}
               className="font-semibold text-purple"
             />

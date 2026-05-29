@@ -61,7 +61,7 @@ export const PinContainer = ({
 
   // Wrap in Link if href exists, otherwise return the div directly
   return href ? (
-    <Link href={href} className="block">
+    <Link href={href} target="_blank" rel="noopener noreferrer" className="block">
       {containerContent}
     </Link>
   ) : (

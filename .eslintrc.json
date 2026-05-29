@@ -9,14 +9,14 @@
   "plugins": ["tailwindcss", "import"],
   "rules": {
     "import/order": [
-      // "error",
+      "error",
       {
         "groups": [
-          "builtin", // Built-in types are first
-          "external", // External libraries
-          "internal", // Internal modules
-          ["parent", "sibling", "index"], // Parent and sibling types can be mingled together
-          "object" // Object imports
+          "builtin",
+          "external",
+          "internal",
+          ["parent", "sibling", "index"],
+          "object"
         ],
         "newlines-between": "always",
         "pathGroups": [

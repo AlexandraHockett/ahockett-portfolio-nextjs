@@ -20,15 +20,15 @@ const geistMono = localFont({
 
 export const metadata: Metadata = {
   title:
-    "Alexandra Hockett | Front-End Developer Portfolio | React & Next.js Expert",
+    "Alexandra Hockett | Full Stack Developer & AI Integration Specialist | React & Next.js Expert",
   description:
-    "Professional front-end developer transforming from hospitality to tech. Expert in React, Next.js, and modern web technologies. Creating innovative digital solutions with a unique professional perspective.",
+    "Full Stack Developer & AI Integration Specialist building production SaaS platforms, e-commerce solutions, and AI-powered applications. Expert in React, Next.js, TypeScript, and modern web technologies.",
   keywords:
-    "front-end developer, React developer, Next.js, web developer, portfolio, Alexandra Hockett",
+    "full stack developer, AI integration specialist, React developer, Next.js, TypeScript, SaaS, web developer, portfolio, Alexandra Hockett",
   openGraph: {
-    title: "Alexandra Hockett - Front-End Developer",
+    title: "Alexandra Hockett - Full Stack Developer | AI Integration Specialist",
     description:
-      "Professional front-end developer portfolio showcasing expertise in React and Next.js.",
+      "Full Stack Developer & AI Integration Specialist portfolio showcasing production SaaS platforms, e-commerce solutions, and AI-powered applications.",
     images: [{ url: "/logo.svg" }],
   },
 };
