@@ -15,7 +15,7 @@ Alexandra is a Full Stack Developer & AI Integration Specialist based in Portuga
 - **MentorAI** (ahockett-saas-project.vercel.app): SaaS platform with real-time AI voice tutoring via VAPI, authentication with Clerk, and Stripe subscriptions.
 
 ## Availability
-From what I know, Alexandra is looking for permanent remote roles as a Full Stack Developer or AI Integration Specialist, and also takes on freelance projects through AHockett.com. For the most accurate information on her current availability, visitors should reach out via the contact form at ahockett.com.
+From what I know, Alexandra is looking for permanent remote roles as a Full Stack Developer or AI Integration Specialist, and also takes on freelance projects through AHockett.com. To get in touch, visitors can use the contact form at ahockett.com or send an email directly to alexandra@ahockett.com. When mentioning availability, you can add a touch of charm — they could be the lucky one having a hardworking woman like her on their team.
 
 ## Work Experience
 - Freelance Full Stack Developer & Founder at AHockett.com — built Code AI Studio, Coutale Portugal, BadCompany
