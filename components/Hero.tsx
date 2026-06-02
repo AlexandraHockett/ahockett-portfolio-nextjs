@@ -25,12 +25,16 @@ const Hero = () => {
       </div>
       <div className="relative my-10 sm:my-20 flex justify-center">
         <div className="flex max-w-[89vw] flex-col items-center justify-center md:max-w-2xl lg:max-w-[60vw]">
-          <div className="flex items-center gap-2 mb-3">
-            <span className="relative flex h-2 w-2">
-              <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-green-400 opacity-75" />
-              <span className="relative inline-flex rounded-full h-2 w-2 bg-green-400" />
-            </span>
-            <span className="text-xs text-green-400 font-medium tracking-wide">Open to Work</span>
+          <div className="flex items-center gap-3 mb-3">
+            <div className="flex items-center gap-2">
+              <span className="relative flex h-2 w-2">
+                <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-green-400 opacity-75" />
+                <span className="relative inline-flex rounded-full h-2 w-2 bg-green-400" />
+              </span>
+              <span className="text-xs text-green-400 font-medium tracking-wide">Open to Work</span>
+            </div>
+            <span className="text-white/30 text-xs">·</span>
+            <span className="text-xs text-white/50 font-medium tracking-wide">Coding since 2021</span>
           </div>
           <h2 className="text-center text-[9px] sm:text-xs uppercase tracking-wider sm:tracking-widest text-blue-100">
             Full Stack Developer | AI Integration Specialist
