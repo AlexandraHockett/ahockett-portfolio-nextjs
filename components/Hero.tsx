@@ -8,7 +8,7 @@ import Link from "next/link";
 
 const Hero = () => {
   return (
-    <div className="pb-20 pt-36">
+    <div className="pb-20 pt-20 sm:pt-36">
       <div>
         <Spotlight
           className="-left-10 -top-40 h-screen md:-left-32 md:-top-20"
@@ -20,11 +20,10 @@ const Hero = () => {
         />
         <Spotlight className="left-80 top-28 h-[80vh] w-[50vw]" fill="blue" />
       </div>
-      <div className="absolute left-0 top-0  flex h-screen w-full items-center justify-center bg-white bg-grid-black/[0.2] dark:bg-black-100 dark:bg-grid-white/[0.02]">
-        {/* Radial gradient for the container to give a faded look */}
+      <div className="absolute left-0 top-0 flex h-screen w-full items-center justify-center bg-white bg-grid-black/[0.2] dark:bg-black-100 dark:bg-grid-white/[0.02]">
         <div className="pointer-events-none absolute inset-0 flex items-center justify-center bg-white [mask-image:radial-gradient(ellipse_at_center,transparent_20%,black)] dark:bg-black-100" />
       </div>
-      <div className="relative my-20 flex justify-center">
+      <div className="relative my-10 sm:my-20 flex justify-center">
         <div className="flex max-w-[89vw] flex-col items-center justify-center md:max-w-2xl lg:max-w-[60vw]">
           <div className="flex items-center gap-2 mb-3">
             <span className="relative flex h-2 w-2">
@@ -33,12 +32,12 @@ const Hero = () => {
             </span>
             <span className="text-xs text-green-400 font-medium tracking-wide">Open to Work</span>
           </div>
-          <h2 className="text-center text-xs uppercase tracking-widest text-blue-100 whitespace-nowrap">
+          <h2 className="text-center text-[9px] sm:text-xs uppercase tracking-wider sm:tracking-widest text-blue-100">
             Full Stack Developer | AI Integration Specialist
           </h2>
           <TextGenerateEffect
-            className="text-center text-[40px] md:text-5xl lg:text-6xl"
-            words="Hi, I’m Alexandra. I craft dynamic and responsive WebSites"
+            className="text-center text-[28px] sm:text-[40px] md:text-5xl lg:text-6xl"
+            words="Hi, I'm Alexandra. I craft dynamic and responsive web apps"
           />
           <div className="mb-4 text-center text-sm md:text-lg md:tracking-wider lg:text-2xl">
             Based in Portugal, I bring ideas to life with{" "}

@@ -122,7 +122,7 @@ export default function ZaraCompanion() {
             animate={{ opacity: 1, y: 0, scale: 1 }}
             exit={{ opacity: 0, y: 20, scale: 0.95 }}
             transition={{ duration: 0.2 }}
-            className="w-[340px] rounded-2xl overflow-hidden shadow-2xl border border-white/10"
+            className="w-[calc(100vw-3rem)] max-w-[340px] rounded-2xl overflow-hidden shadow-2xl border border-white/10"
             style={{ background: "rgba(10,10,20,0.92)", backdropFilter: "blur(20px)" }}
           >
             {/* Header */}
