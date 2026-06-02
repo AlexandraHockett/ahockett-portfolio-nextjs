@@ -59,7 +59,8 @@ const Skills = () => (
         <Button
           key={cat.title}
           borderRadius="1.75rem"
-          className="flex-1 text-white border-neutral-200 dark:border-slate-800"
+          className="text-white border-neutral-200 dark:border-slate-800"
+          containerClassName="col-span-1 md:col-span-1 lg:col-span-1 w-full"
           duration={Math.floor(Math.random() * 8000) + 8000}
         >
           <div className="flex flex-col p-6 gap-5">
