@@ -1,4 +1,4 @@
-import Approach from "@/components/Approach";
+import Skills from "@/components/Skills";
 import Certificates from "@/components/Certificates";
 import Experience from "@/components/Experience";
 import Footer from "@/components/Footer";
@@ -16,7 +16,7 @@ export default function Home() {
         <RecentProjects />
         <Certificates />
         <Experience />
-        <Approach />
+        <Skills />
         <Footer />
       </div>
       <ZaraCompanion />

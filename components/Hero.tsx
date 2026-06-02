@@ -1,4 +1,4 @@
-import { FaLocationArrow, FaDownload } from "react-icons/fa6";
+import { FaLocationArrow, FaDownload, FaLinkedin } from "react-icons/fa6";
 
 import { FlipWords } from "./ui/FlipWords";
 import MagicButton from "./ui/MagicButton";
@@ -35,6 +35,16 @@ const Hero = () => {
             </div>
             <span className="text-white/30 text-xs">·</span>
             <span className="text-xs text-white/50 font-medium tracking-wide">Coding since 2021</span>
+            <span className="text-white/30 text-xs">·</span>
+            <a
+              href="https://www.linkedin.com/in/alexandra-hockett/"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="flex items-center gap-1 text-xs text-white/50 hover:text-purple transition-colors"
+            >
+              <FaLinkedin size={11} />
+              <span>LinkedIn</span>
+            </a>
           </div>
           <h2 className="text-center text-[9px] sm:text-xs uppercase tracking-wider sm:tracking-widest text-blue-100">
             Full Stack Developer | AI Integration Specialist

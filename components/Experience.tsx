@@ -71,6 +71,11 @@ const Experience = () => {
                 <h2 className="text-purple text-lg font-semibold">
                   {card.company}
                 </h2>
+                {card.dateRange && (
+                  <p className="text-xs text-white/40 font-medium tracking-wide uppercase">
+                    {card.dateRange}
+                  </p>
+                )}
                 <div className="w-12 h-0.5 bg-purple mx-auto"></div>
                 <p className="text-white-100 font-medium text-sm leading-relaxed">
                   {card.desc}

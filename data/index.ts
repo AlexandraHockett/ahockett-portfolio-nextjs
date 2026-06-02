@@ -8,7 +8,7 @@ export const navItems = [
 export const gridItems = [
   {
     id: 1,
-    title: "Collaborating closely with clients to bring their visions to life.",
+    title: "I thrive in collaborative teams, shipping from design to production.",
     description: "",
     className: "lg:col-span-3 md:col-span-6 md:row-span-4 lg:min-h-[60vh]",
     imgClassName: "w-full h-full",
@@ -18,7 +18,7 @@ export const gridItems = [
   },
   {
     id: 2,
-    title: "Adaptable to your schedule, wherever you are in the world.",
+    title: "Remote-first and async-friendly — comfortable across time zones.",
     description: "",
     className: "lg:col-span-2 md:col-span-3 md:row-span-2",
     imgClassName: "",
@@ -290,24 +290,27 @@ export const issuer = [
 export const workExperience = [
   {
     id: 1,
-    title: "Curricular Internship in Educational Technology",
+    title: "React Curriculum Developer & Instructor",
     company: "Happy Code Portugal",
-    desc: "Developed and implemented a comprehensive 8-lesson React.js bootcamp curriculum for teenagers, covering fundamentals from JSX and components to advanced topics like state management with useState hook, React Router navigation, and component architecture best practices. Created complete educational materials including step-by-step guides, interactive exercises, and practical projects culminating in a fully functional website with contact forms and dynamic navigation. Additionally, conducted thorough review and optimization of the Flutter course curriculum, incorporating high-quality feedback to improve content clarity and enhance explanations of core concepts including padding, spacing, and UI development principles.",
+    dateRange: "Sep – Nov 2024",
+    desc: "Developed and delivered an 8-lesson React.js bootcamp curriculum for teenagers, covering JSX, component architecture, state management with hooks, and React Router. Built all educational materials from scratch — step-by-step guides, interactive exercises, and capstone projects. Also reviewed and optimised the existing Flutter curriculum.",
     className: "md:col-span-2",
     thumbnail: "/exp1.webp",
   },
   {
     id: 2,
-    title: "Volunteer",
+    title: "Conference Volunteer",
     company: "Web Summit",
-    desc: "Assisted attendees at the entrance and supported event operations, contributing to the smooth flow of one of the world’s leading tech conferences. Provided guidance, answered queries, and ensured a welcoming experience for participants. Gained hands-on experience in event coordination and strengthened interpersonal and organizational skills in a dynamic environment.",
-    className: "md:col-span-2", // change to md:col-span-2
+    dateRange: "2024",
+    desc: "Supported event operations at one of the world’s largest tech conferences, assisting thousands of attendees at entry points. Developed strong communication and problem-solving skills in a fast-paced, high-volume environment.",
+    className: "md:col-span-2",
     thumbnail: "/exp2.webp",
   },
   {
     id: 3,
     title: "Freelance Full Stack Developer & Founder",
     company: "AHockett.com",
+    dateRange: "Nov 2024 – Present",
     desc: "Founded and developed ahockett.com, delivering full-stack web and AI-powered solutions for clients. Built Code AI Studio — a production SaaS platform integrating 25+ AI models with credit-based monetisation and GDPR compliance. Developed Coutale Portugal — a full e-commerce & B2B platform with a custom laser engraving canvas editor, automated invoicing, and multi-payment support. Specialises in Next.js, TypeScript, SaaS architecture, AI integrations, and conversion-optimised user experiences.",
     className: "md:col-span-2",
     thumbnail: "/videos/ahockett-logo.mp4",
