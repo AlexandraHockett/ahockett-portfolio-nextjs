@@ -130,32 +130,46 @@ export const BentoGridItem = ({
           </div>
           {id === 2 && <GridGlobe />}
           {id === 3 && (
-            <div className="hidden sm:flex gap-1 lg:gap-5 w-fit absolute -right-3 lg:-right-2">
-              <div className="flex flex-col gap-3 md:gap-3 lg:gap-8">
-                {["React.js", "Next.js", "TypeScript"].map((item) => (
+            <>
+              {/* Mobile: inline tag pills */}
+              <div className="flex lg:hidden flex-wrap gap-2 mt-4">
+                {["Next.js", "React", "TypeScript", "Tailwind", "Prisma", "PostgreSQL", "Supabase", "Claude AI"].map((item) => (
                   <span
                     key={item}
-                    className="lg:py-4 lg:px-3 py-2 px-3 text-xs lg:text-base opacity-50 
-                    lg:opacity-100 rounded-lg text-center bg-[#10132E]"
-                  >
-                    {item}
-                  </span>
-                ))}
-                <span className="lg:py-4 lg:px-3 py-4 px-3  rounded-lg text-center bg-[#10132E]"></span>
-              </div>
-              <div className="flex flex-col gap-3 md:gap-3 lg:gap-8">
-                <span className="py-4 px-3 rounded-lg text-center bg-[#10132e]" />
-                {["TailwindCSS", "HTML", "CSS"].map((item) => (
-                  <span
-                    key={item}
-                    className="lg:py-4 lg:px-3 py-2 px-3 text-xs lg:text-base opacity-50 
-                    lg:opacity-100 rounded-lg text-center bg-[#10132e]"
+                    className="text-xs px-2.5 py-1 rounded-full bg-white/10 text-white/60 border border-white/10"
                   >
                     {item}
                   </span>
                 ))}
               </div>
-            </div>
+              {/* Desktop: staggered column pills */}
+              <div className="hidden lg:flex gap-1 lg:gap-5 w-fit absolute -right-3 lg:-right-2">
+                <div className="flex flex-col gap-3 md:gap-3 lg:gap-8">
+                  {["React.js", "Next.js", "TypeScript"].map((item) => (
+                    <span
+                      key={item}
+                      className="lg:py-4 lg:px-3 py-2 px-3 text-xs lg:text-base opacity-50
+                      lg:opacity-100 rounded-lg text-center bg-[#10132E]"
+                    >
+                      {item}
+                    </span>
+                  ))}
+                  <span className="lg:py-4 lg:px-3 py-4 px-3 rounded-lg text-center bg-[#10132E]"></span>
+                </div>
+                <div className="flex flex-col gap-3 md:gap-3 lg:gap-8">
+                  <span className="py-4 px-3 rounded-lg text-center bg-[#10132e]" />
+                  {["TailwindCSS", "HTML", "CSS"].map((item) => (
+                    <span
+                      key={item}
+                      className="lg:py-4 lg:px-3 py-2 px-3 text-xs lg:text-base opacity-50
+                      lg:opacity-100 rounded-lg text-center bg-[#10132e]"
+                    >
+                      {item}
+                    </span>
+                  ))}
+                </div>
+              </div>
+            </>
           )}
           {id === 6 && (
             <div className="mt-5 relative">
