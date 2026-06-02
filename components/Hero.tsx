@@ -1,4 +1,4 @@
-import { FaLocationArrow } from "react-icons/fa6";
+import { FaLocationArrow, FaDownload } from "react-icons/fa6";
 
 import { FlipWords } from "./ui/FlipWords";
 import MagicButton from "./ui/MagicButton";
@@ -26,6 +26,13 @@ const Hero = () => {
       </div>
       <div className="relative my-20 flex justify-center">
         <div className="flex max-w-[89vw] flex-col items-center justify-center md:max-w-2xl lg:max-w-[60vw]">
+          <div className="flex items-center gap-2 mb-3">
+            <span className="relative flex h-2 w-2">
+              <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-green-400 opacity-75" />
+              <span className="relative inline-flex rounded-full h-2 w-2 bg-green-400" />
+            </span>
+            <span className="text-xs text-green-400 font-medium tracking-wide">Open to Work</span>
+          </div>
           <h2 className="text-center text-xs uppercase tracking-widest text-blue-100 whitespace-nowrap">
             Full Stack Developer | AI Integration Specialist
           </h2>
@@ -47,13 +54,23 @@ const Hero = () => {
               className="font-semibold text-purple"
             />
           </div>
-          <Link href="#about">
-            <MagicButton
-              title="Show my work"
-              icon={<FaLocationArrow />}
-              position="right"
-            />
-          </Link>
+          <div className="flex flex-col sm:flex-row gap-3 items-center">
+            <Link href="#about">
+              <MagicButton
+                title="Show my work"
+                icon={<FaLocationArrow />}
+                position="right"
+              />
+            </Link>
+            <a href="/Alexandra-Hockett-CV.pdf" download="Alexandra-Hockett-CV.pdf">
+              <MagicButton
+                title="Download CV"
+                icon={<FaDownload />}
+                position="right"
+                otherClasses="!bg-[#161A31]"
+              />
+            </a>
+          </div>
         </div>
       </div>
     </div>

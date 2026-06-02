@@ -49,8 +49,8 @@ export const gridItems = [
 
   {
     id: 5,
-    title: "Developing a cutting-edge JavaScript animation library.",
-    description: "Get a sneak peek at what’s coming next.",
+    title: "Currently building AI-powered SaaS and creative automation tools.",
+    description: "Open to remote opportunities.",
     className: "md:col-span-3 md:row-span-2",
     imgClassName: "absolute right-0 bottom-0 md:w-96 w-60",
     titleClassName: "justify-center md:justify-start lg:justify-center",
@@ -104,6 +104,19 @@ export const projects = [
       "https://skillicons.dev/icons?i=vercel",
     ],
     link: "https://codeaistudio.com",
+  },
+  {
+    id: 6,
+    title: "AI Agents System — Interactive Demo",
+    des: "Interactive demo of the autonomous agent system built into Code AI Studio. 15 agents across Business, Development, Creative, and Multi-agent categories with real-time streaming UI. The full implementation runs privately within the platform.",
+    img: "/agents-demo.png",
+    iconLists: [
+      "https://skillicons.dev/icons?i=nextjs",
+      "https://skillicons.dev/icons?i=tailwind",
+      "https://skillicons.dev/icons?i=ts",
+      "https://skillicons.dev/icons?i=vercel",
+    ],
+    link: "https://ai-agents-demo-codeaistudio.vercel.app/",
   },
   {
     id: 2,

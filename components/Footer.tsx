@@ -55,10 +55,7 @@ const Footer = () => {
       {/* Add a footer credit line */}
       <p className="text-sm text-gray-400 mt-4">
         Developed by{" "}
-        <a
-          href="https://www.alexandrahockett.com/"
-          className="text-white hover:underline"
-        >
+        <a href="https://ahockett.com/" className="text-white hover:underline">
           AHockett
         </a>
       </p>
