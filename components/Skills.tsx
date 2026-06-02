@@ -54,7 +54,7 @@ const Skills = () => (
       Technical <span className="text-purple">skills</span>
     </h1>
 
-    <div className="mt-12 grid grid-cols-1 md:grid-cols-3 gap-6">
+    <div className="mt-12 grid grid-cols-1 lg:grid-cols-3 gap-6 w-full">
       {categories.map((cat) => (
         <Button
           key={cat.title}
