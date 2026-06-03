@@ -119,6 +119,20 @@ export const projects = [
     link: "https://ai-agents-demo-codeaistudio.vercel.app/",
   },
   {
+    id: 7,
+    title: "VidMind — AI Video Analyser",
+    des: "Upload your video. Discover your best moments. Generate your post. In 30 seconds. AI-powered video analysis for content creators — hook score, best clips, and social posts for Instagram, TikTok, LinkedIn and YouTube.",
+    img: "/vidmind.png",
+    iconLists: [
+      "https://skillicons.dev/icons?i=nextjs",
+      "https://skillicons.dev/icons?i=ts",
+      "https://skillicons.dev/icons?i=tailwind",
+      "https://skillicons.dev/icons?i=vercel",
+      "https://skillicons.dev/icons?i=framer",
+    ],
+    link: "https://vidmind-studio.vercel.app",
+  },
+  {
     id: 2,
     title: "Coutale Portugal — E-commerce & B2B Platform",
     des: "Full e-commerce platform for Coutale Portugal — a premium wine accessories brand. Includes category filtering, custom product personalisation editor, admin dashboard, Stripe checkout, transactional emails, and support for 3 languages (PT/EN/ES).",
