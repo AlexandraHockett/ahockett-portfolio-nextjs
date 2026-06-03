@@ -33,8 +33,7 @@ const RecentProjects = () => {
                   <img
                     src={img}
                     alt={title}
-                    className="absolute inset-0 m-auto object-contain max-w-[85%] max-h-[85%]"
-                    style={{ top: "50%", left: "50%", transform: "translate(-50%,-50%)" }}
+                    className="absolute inset-0 w-full h-full object-cover"
                   />
                 )}
               </div>
