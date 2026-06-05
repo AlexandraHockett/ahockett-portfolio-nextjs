@@ -40,6 +40,17 @@ export async function POST(req: Request) {
   try {
     const { messages } = await req.json();
 
+    if (!Array.isArray(messages)) {
+      return new Response(JSON.stringify({ error: "Invalid request" }), { status: 400 });
+    }
+
+    // Enforce max 300 chars per message server-side (bypassing frontend is possible)
+    for (const msg of messages) {
+      if (typeof msg.content === "string" && msg.content.length > 300) {
+        return new Response(JSON.stringify({ error: "Message too long" }), { status: 400 });
+      }
+    }
+
     // Keep only the last 10 messages to cap cost and context size
     const trimmedMessages = messages.slice(-10);
 
