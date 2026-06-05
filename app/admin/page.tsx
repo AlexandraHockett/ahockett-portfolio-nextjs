@@ -153,10 +153,11 @@ export default async function AdminPage() {
           ))}
         </div>
 
-        {/* Per-IP table */}
+        {/* Visitors section */}
         <div className="rounded-2xl border border-white/10 overflow-hidden">
-          <div className="px-5 py-3 border-b border-white/10 bg-white/5 flex items-center justify-between">
-            <h2 className="font-semibold text-sm">Visitors — one row per IP</h2>
+          {/* Header */}
+          <div className="px-4 py-3 border-b border-white/10 bg-white/5 flex items-center justify-between">
+            <h2 className="font-semibold text-sm">Visitors</h2>
             <div className="flex items-center gap-3 text-xs">
               <span className="text-green-400">
                 👤 {stats.perIp.filter(r => !detectBot(r.user_agent).isBot).length} humans
@@ -166,7 +167,44 @@ export default async function AdminPage() {
               </span>
             </div>
           </div>
-          <div className="overflow-x-auto">
+
+          {/* Mobile: cards */}
+          <div className="md:hidden divide-y divide-white/5">
+            {stats.perIp.map((row) => {
+              const { isBot, label } = detectBot(row.user_agent);
+              return (
+                <div key={row.ip_hash} className="p-4 space-y-2.5">
+                  {/* Row 1: IP + flag + type */}
+                  <div className="flex items-center justify-between gap-2">
+                    <span className="font-mono text-purple text-xs truncate">{row.ip_hash}</span>
+                    <div className="flex items-center gap-2 shrink-0">
+                      <span className="text-base">{row.country ? toFlag(row.country) : "—"}</span>
+                      <span className={`text-[10px] px-2 py-0.5 rounded-full font-medium ${
+                        isBot
+                          ? "bg-yellow-500/15 text-yellow-400 border border-yellow-500/20"
+                          : "bg-green-500/15 text-green-400 border border-green-500/20"
+                      }`}>
+                        {isBot ? `🤖 ${label}` : "👤 Human"}
+                      </span>
+                    </div>
+                  </div>
+                  {/* Row 2: visits + last seen + browser */}
+                  <div className="flex items-center gap-3 text-xs text-white/50">
+                    <span className="bg-purple/20 text-purple px-2 py-0.5 rounded-full font-medium">
+                      {row.visits}×
+                    </span>
+                    <span>{new Date(row.last_seen).toLocaleString("en-GB", { dateStyle: "short", timeStyle: "short" })}</span>
+                    <span className="truncate text-white/30" title={row.user_agent || ""}>{parseUA(row.user_agent)}</span>
+                  </div>
+                  {/* Row 3: note */}
+                  <NoteCell ipHash={row.ip_hash} initialNote={row.note} />
+                </div>
+              );
+            })}
+          </div>
+
+          {/* Desktop: table */}
+          <div className="hidden md:block overflow-x-auto">
             <table className="w-full text-sm">
               <thead>
                 <tr className="border-b border-white/5 text-white/40 text-xs">
@@ -175,52 +213,43 @@ export default async function AdminPage() {
                   <th className="text-left px-5 py-2.5 font-medium">Type</th>
                   <th className="text-left px-5 py-2.5 font-medium">Visits</th>
                   <th className="text-left px-5 py-2.5 font-medium">Last seen</th>
-                  <th className="text-left px-5 py-2.5 font-medium hidden sm:table-cell">Browser</th>
+                  <th className="text-left px-5 py-2.5 font-medium">Browser</th>
                   <th className="text-left px-5 py-2.5 font-medium">Note</th>
                 </tr>
               </thead>
               <tbody className="divide-y divide-white/5">
-                {stats.perIp.map((row) => (
-                  <tr key={row.ip_hash} className="hover:bg-white/[0.03] transition-colors">
-                    <td className="px-5 py-3 font-mono text-purple text-xs">{row.ip_hash}</td>
-                    <td className="px-5 py-3 text-center text-base" title={row.country ?? "Unknown"}>
-                      {row.country ? toFlag(row.country) : <span className="text-white/20 text-xs">—</span>}
-                    </td>
-                    <td className="px-5 py-3">
-                      {(() => {
-                        const { isBot, label } = detectBot(row.user_agent);
-                        return (
-                          <span className={`text-[10px] px-2 py-0.5 rounded-full font-medium ${
-                            isBot
-                              ? "bg-yellow-500/15 text-yellow-400 border border-yellow-500/20"
-                              : "bg-green-500/15 text-green-400 border border-green-500/20"
-                          }`}>
-                            {isBot ? `🤖 ${label}` : "👤 Human"}
-                          </span>
-                        );
-                      })()}
-                    </td>
-                    <td className="px-5 py-3">
-                      <span className="bg-purple/20 text-purple text-xs px-2 py-0.5 rounded-full">
-                        {row.visits}
-                      </span>
-                    </td>
-                    <td className="px-5 py-3 text-white/60 text-xs whitespace-nowrap">
-                      {new Date(row.last_seen).toLocaleString("en-GB", {
-                        dateStyle: "short",
-                        timeStyle: "short",
-                      })}
-                    </td>
-                    <td className="px-5 py-3 text-white/40 text-xs hidden sm:table-cell max-w-[180px]" title={row.user_agent || ""}>
-                      <span className="block truncate cursor-help">
-                        {parseUA(row.user_agent)}
-                      </span>
-                    </td>
-                    <td className="px-5 py-3 min-w-[140px]">
-                      <NoteCell ipHash={row.ip_hash} initialNote={row.note} />
-                    </td>
-                  </tr>
-                ))}
+                {stats.perIp.map((row) => {
+                  const { isBot, label } = detectBot(row.user_agent);
+                  return (
+                    <tr key={row.ip_hash} className="hover:bg-white/[0.03] transition-colors">
+                      <td className="px-5 py-3 font-mono text-purple text-xs">{row.ip_hash}</td>
+                      <td className="px-5 py-3 text-center text-base" title={row.country ?? "Unknown"}>
+                        {row.country ? toFlag(row.country) : <span className="text-white/20 text-xs">—</span>}
+                      </td>
+                      <td className="px-5 py-3">
+                        <span className={`text-[10px] px-2 py-0.5 rounded-full font-medium ${
+                          isBot
+                            ? "bg-yellow-500/15 text-yellow-400 border border-yellow-500/20"
+                            : "bg-green-500/15 text-green-400 border border-green-500/20"
+                        }`}>
+                          {isBot ? `🤖 ${label}` : "👤 Human"}
+                        </span>
+                      </td>
+                      <td className="px-5 py-3">
+                        <span className="bg-purple/20 text-purple text-xs px-2 py-0.5 rounded-full">{row.visits}</span>
+                      </td>
+                      <td className="px-5 py-3 text-white/60 text-xs whitespace-nowrap">
+                        {new Date(row.last_seen).toLocaleString("en-GB", { dateStyle: "short", timeStyle: "short" })}
+                      </td>
+                      <td className="px-5 py-3 text-white/40 text-xs max-w-[180px]" title={row.user_agent || ""}>
+                        <span className="block truncate cursor-help">{parseUA(row.user_agent)}</span>
+                      </td>
+                      <td className="px-5 py-3 min-w-[140px]">
+                        <NoteCell ipHash={row.ip_hash} initialNote={row.note} />
+                      </td>
+                    </tr>
+                  );
+                })}
               </tbody>
             </table>
           </div>
