@@ -10,6 +10,28 @@ const toFlag = (code: string) =>
     String.fromCodePoint(c.charCodeAt(0) + 127397)
   );
 
+function parseUA(ua: string | null): string {
+  if (!ua) return "Unknown";
+  if (/HeadlessChrome/i.test(ua)) return "Headless Chrome";
+  if (/node-fetch|python|curl|wget/i.test(ua)) return ua.split("/")[0];
+
+  const browser =
+    ua.match(/Edg\/[\d.]+/) ? "Edge" :
+    ua.match(/Chrome\/[\d.]+/) ? `Chrome ${ua.match(/Chrome\/([\d]+)/)?.[1] ?? ""}` :
+    ua.match(/Firefox\/[\d.]+/) ? `Firefox ${ua.match(/Firefox\/([\d]+)/)?.[1] ?? ""}` :
+    ua.match(/Safari\/[\d.]+/) ? "Safari" :
+    ua.match(/([A-Za-z]+Bot)/i)?.[1] ?? "Unknown";
+
+  const os =
+    ua.includes("Windows") ? "Windows" :
+    ua.includes("iPhone") ? "iPhone" :
+    ua.includes("Android") ? "Android" :
+    ua.includes("Mac") ? "Mac" :
+    ua.includes("X11") ? "Linux" : "";
+
+  return os ? `${browser} / ${os}` : browser;
+}
+
 const BOT_PATTERNS = [
   /bot/i, /crawler/i, /spider/i, /scraper/i,
   /curl/i, /wget/i, /python-requests/i, /python\//i,
@@ -189,8 +211,10 @@ export default async function AdminPage() {
                         timeStyle: "short",
                       })}
                     </td>
-                    <td className="px-5 py-3 text-white/40 text-xs truncate max-w-[160px] hidden sm:table-cell">
-                      {row.user_agent?.split(" ").slice(0, 2).join(" ")}
+                    <td className="px-5 py-3 text-white/40 text-xs hidden sm:table-cell max-w-[180px]" title={row.user_agent || ""}>
+                      <span className="block truncate cursor-help">
+                        {parseUA(row.user_agent)}
+                      </span>
                     </td>
                     <td className="px-5 py-3 min-w-[140px]">
                       <NoteCell ipHash={row.ip_hash} initialNote={row.note} />
