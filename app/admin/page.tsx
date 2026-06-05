@@ -82,7 +82,7 @@ async function getStats() {
 
   const { data: allVisits } = await db
     .from("portfolio_visits")
-    .select("ip_hash, user_agent, country, created_at")
+    .select("ip_hash, user_agent, country, is_vpn, isp, created_at")
     .order("created_at", { ascending: false });
 
   const { data: notesData } = await db
@@ -90,12 +90,14 @@ async function getStats() {
     .select("ip_hash, note");
   const notesMap = new Map(notesData?.map((n) => [n.ip_hash, n.note]) ?? []);
 
-  const ipMap = new Map<string, { user_agent: string; country: string | null; last_seen: string; visits: number }>();
+  const ipMap = new Map<string, { user_agent: string; country: string | null; is_vpn: boolean; isp: string | null; last_seen: string; visits: number }>();
   for (const v of allVisits ?? []) {
     if (!ipMap.has(v.ip_hash)) {
-      ipMap.set(v.ip_hash, { user_agent: v.user_agent, country: v.country, last_seen: v.created_at, visits: 1 });
+      ipMap.set(v.ip_hash, { user_agent: v.user_agent, country: v.country, is_vpn: !!v.is_vpn, isp: v.isp, last_seen: v.created_at, visits: 1 });
     } else {
-      ipMap.get(v.ip_hash)!.visits++;
+      const entry = ipMap.get(v.ip_hash)!;
+      entry.visits++;
+      if (v.is_vpn) entry.is_vpn = true; // flag VPN if any visit was via VPN
     }
   }
 
@@ -177,7 +179,7 @@ export default async function AdminPage() {
                   {/* Row 1: IP + flag + type */}
                   <div className="flex items-center justify-between gap-2">
                     <span className="font-mono text-purple text-xs truncate">{row.ip_hash}</span>
-                    <div className="flex items-center gap-2 shrink-0">
+                    <div className="flex items-center gap-2 shrink-0 flex-wrap justify-end">
                       <span className="text-base">{row.country ? toFlag(row.country) : "—"}</span>
                       <span className={`text-[10px] px-2 py-0.5 rounded-full font-medium ${
                         isBot
@@ -186,6 +188,11 @@ export default async function AdminPage() {
                       }`}>
                         {isBot ? `🤖 ${label}` : "👤 Human"}
                       </span>
+                      {!isBot && row.is_vpn && (
+                        <span className="text-[10px] px-2 py-0.5 rounded-full font-medium bg-orange-500/15 text-orange-400 border border-orange-500/20" title={row.isp || "VPN/Proxy"}>
+                          🔒 VPN
+                        </span>
+                      )}
                     </div>
                   </div>
                   {/* Row 2: visits + last seen + browser */}
@@ -227,13 +234,20 @@ export default async function AdminPage() {
                         {row.country ? toFlag(row.country) : <span className="text-white/20 text-xs">—</span>}
                       </td>
                       <td className="px-5 py-3">
-                        <span className={`text-[10px] px-2 py-0.5 rounded-full font-medium ${
-                          isBot
-                            ? "bg-yellow-500/15 text-yellow-400 border border-yellow-500/20"
-                            : "bg-green-500/15 text-green-400 border border-green-500/20"
-                        }`}>
-                          {isBot ? `🤖 ${label}` : "👤 Human"}
-                        </span>
+                        <div className="flex items-center gap-1.5 flex-wrap">
+                          <span className={`text-[10px] px-2 py-0.5 rounded-full font-medium ${
+                            isBot
+                              ? "bg-yellow-500/15 text-yellow-400 border border-yellow-500/20"
+                              : "bg-green-500/15 text-green-400 border border-green-500/20"
+                          }`}>
+                            {isBot ? `🤖 ${label}` : "👤 Human"}
+                          </span>
+                          {!isBot && row.is_vpn && (
+                            <span className="text-[10px] px-2 py-0.5 rounded-full font-medium bg-orange-500/15 text-orange-400 border border-orange-500/20" title={row.isp || "VPN/Proxy"}>
+                              🔒 VPN
+                            </span>
+                          )}
+                        </div>
                       </td>
                       <td className="px-5 py-3">
                         <span className="bg-purple/20 text-purple text-xs px-2 py-0.5 rounded-full">{row.visits}</span>
