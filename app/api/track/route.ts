@@ -16,10 +16,12 @@ export async function POST(req: NextRequest) {
       .slice(0, 16);
 
     const userAgent = req.headers.get("user-agent") || "";
+    const country = req.headers.get("x-vercel-ip-country") || null;
 
     await getSupabaseAdmin().from("portfolio_visits").insert({
       ip_hash: ipHash,
       user_agent: userAgent,
+      country,
     });
 
     return NextResponse.json({ ok: true });

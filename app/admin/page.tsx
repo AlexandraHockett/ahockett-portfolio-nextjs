@@ -5,6 +5,11 @@ import { NoteCell } from "@/components/admin/NoteCell";
 
 export const dynamic = "force-dynamic";
 
+const toFlag = (code: string) =>
+  code.toUpperCase().replace(/./g, (c) =>
+    String.fromCodePoint(c.charCodeAt(0) + 127397)
+  );
+
 async function getStats() {
   const db = getSupabaseAdmin();
 
@@ -31,7 +36,7 @@ async function getStats() {
 
   const { data: allVisits } = await db
     .from("portfolio_visits")
-    .select("ip_hash, user_agent, created_at")
+    .select("ip_hash, user_agent, country, created_at")
     .order("created_at", { ascending: false });
 
   const { data: notesData } = await db
@@ -39,10 +44,10 @@ async function getStats() {
     .select("ip_hash, note");
   const notesMap = new Map(notesData?.map((n) => [n.ip_hash, n.note]) ?? []);
 
-  const ipMap = new Map<string, { user_agent: string; last_seen: string; visits: number }>();
+  const ipMap = new Map<string, { user_agent: string; country: string | null; last_seen: string; visits: number }>();
   for (const v of allVisits ?? []) {
     if (!ipMap.has(v.ip_hash)) {
-      ipMap.set(v.ip_hash, { user_agent: v.user_agent, last_seen: v.created_at, visits: 1 });
+      ipMap.set(v.ip_hash, { user_agent: v.user_agent, country: v.country, last_seen: v.created_at, visits: 1 });
     } else {
       ipMap.get(v.ip_hash)!.visits++;
     }
@@ -50,6 +55,7 @@ async function getStats() {
 
   const perIp = Array.from(ipMap.entries())
     .map(([ip_hash, data]) => ({ ip_hash, ...data, note: notesMap.get(ip_hash) ?? "" }))
+
     .sort((a, b) => new Date(b.last_seen).getTime() - new Date(a.last_seen).getTime());
 
   return {
@@ -112,6 +118,7 @@ export default async function AdminPage() {
               <thead>
                 <tr className="border-b border-white/5 text-white/40 text-xs">
                   <th className="text-left px-5 py-2.5 font-medium">IP (hashed)</th>
+                  <th className="text-left px-5 py-2.5 font-medium">Country</th>
                   <th className="text-left px-5 py-2.5 font-medium">Visits</th>
                   <th className="text-left px-5 py-2.5 font-medium">Last seen</th>
                   <th className="text-left px-5 py-2.5 font-medium hidden sm:table-cell">Browser</th>
@@ -122,6 +129,9 @@ export default async function AdminPage() {
                 {stats.perIp.map((row) => (
                   <tr key={row.ip_hash} className="hover:bg-white/[0.03] transition-colors">
                     <td className="px-5 py-3 font-mono text-purple text-xs">{row.ip_hash}</td>
+                    <td className="px-5 py-3 text-center text-base" title={row.country ?? "Unknown"}>
+                      {row.country ? toFlag(row.country) : <span className="text-white/20 text-xs">—</span>}
+                    </td>
                     <td className="px-5 py-3">
                       <span className="bg-purple/20 text-purple text-xs px-2 py-0.5 rounded-full">
                         {row.visits}
