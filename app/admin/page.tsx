@@ -21,6 +21,7 @@ const BOT_PATTERNS = [
   /ahrefsbot/i, /mj12bot/i, /dotbot/i, /ia_archiver/i,
   /pingdom/i, /uptimerobot/i, /gptbot/i, /claudebot/i,
   /bytespider/i, /petalbot/i, /dataforseo/i,
+  /HeadlessChrome/i, /node-fetch/i, /vercel/i,
 ];
 
 const detectBot = (ua: string): { isBot: boolean; label: string } => {

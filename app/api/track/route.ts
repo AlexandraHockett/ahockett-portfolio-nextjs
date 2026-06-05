@@ -16,6 +16,16 @@ export async function POST(req: NextRequest) {
       .slice(0, 16);
 
     const userAgent = req.headers.get("user-agent") || "";
+
+    // Skip Vercel's own deploy/health checks
+    const isVercelBot =
+      req.headers.get("x-vercel-deployment-url") !== null ||
+      req.headers.get("x-vercel-internal") !== null ||
+      userAgent.includes("HeadlessChrome") ||
+      userAgent.includes("Googlebot") ||
+      userAgent.includes("node-fetch");
+    if (isVercelBot) return NextResponse.json({ ok: true, skipped: true });
+
     const country = req.headers.get("x-vercel-ip-country") || null;
 
     await getSupabaseAdmin().from("portfolio_visits").insert({
