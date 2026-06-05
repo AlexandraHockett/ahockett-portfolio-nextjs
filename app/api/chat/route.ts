@@ -40,6 +40,9 @@ export async function POST(req: Request) {
   try {
     const { messages } = await req.json();
 
+    // Keep only the last 10 messages to cap cost and context size
+    const trimmedMessages = messages.slice(-10);
+
     const encoder = new TextEncoder();
     const stream = new ReadableStream({
       async start(controller) {
@@ -47,7 +50,7 @@ export async function POST(req: Request) {
           model: "claude-haiku-4-5-20251001",
           max_tokens: 300,
           system: SYSTEM_PROMPT,
-          messages,
+          messages: trimmedMessages,
           stream: true,
         });
 

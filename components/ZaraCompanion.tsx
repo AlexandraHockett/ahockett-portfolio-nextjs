@@ -195,11 +195,17 @@ export default function ZaraCompanion() {
                 <input
                   ref={inputRef}
                   value={input}
-                  onChange={(e) => setInput(e.target.value)}
+                  onChange={(e) => setInput(e.target.value.slice(0, 300))}
                   placeholder="Ask about Alexandra..."
                   disabled={isStreaming}
+                  maxLength={300}
                   className="flex-1 bg-transparent text-sm text-white placeholder-white/30 outline-none disabled:opacity-50"
                 />
+                {input.length > 240 && (
+                  <span className={`text-[10px] shrink-0 ${input.length >= 300 ? "text-red-400" : "text-white/30"}`}>
+                    {300 - input.length}
+                  </span>
+                )}
                 <button
                   type="submit"
                   disabled={isStreaming || !input.trim()}
