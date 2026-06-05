@@ -10,6 +10,29 @@ const toFlag = (code: string) =>
     String.fromCodePoint(c.charCodeAt(0) + 127397)
   );
 
+const BOT_PATTERNS = [
+  /bot/i, /crawler/i, /spider/i, /scraper/i,
+  /curl/i, /wget/i, /python-requests/i, /python\//i,
+  /java\//i, /go-http/i, /libwww/i, /httpunit/i,
+  /nutch/i, /slurp/i, /baiduspider/i, /yandex/i,
+  /facebookexternalhit/i, /twitterbot/i, /slackbot/i,
+  /discordbot/i, /whatsapp/i, /telegrambot/i,
+  /linkedinbot/i, /applebot/i, /semrushbot/i,
+  /ahrefsbot/i, /mj12bot/i, /dotbot/i, /ia_archiver/i,
+  /pingdom/i, /uptimerobot/i, /gptbot/i, /claudebot/i,
+  /bytespider/i, /petalbot/i, /dataforseo/i,
+];
+
+const detectBot = (ua: string): { isBot: boolean; label: string } => {
+  if (!ua) return { isBot: false, label: "Unknown" };
+  const match = BOT_PATTERNS.find((p) => p.test(ua));
+  if (match) {
+    const name = ua.match(/([A-Za-z]+[Bb]ot|[A-Za-z]+[Cc]rawler|[A-Za-z]+[Ss]pider)/)?.[0];
+    return { isBot: true, label: name || "Bot" };
+  }
+  return { isBot: false, label: "Human" };
+};
+
 async function getStats() {
   const db = getSupabaseAdmin();
 
@@ -111,7 +134,14 @@ export default async function AdminPage() {
         <div className="rounded-2xl border border-white/10 overflow-hidden">
           <div className="px-5 py-3 border-b border-white/10 bg-white/5 flex items-center justify-between">
             <h2 className="font-semibold text-sm">Visitors — one row per IP</h2>
-            <span className="text-xs text-white/40">{stats.uniqueIPs} unique</span>
+            <div className="flex items-center gap-3 text-xs">
+              <span className="text-green-400">
+                👤 {stats.perIp.filter(r => !detectBot(r.user_agent).isBot).length} humans
+              </span>
+              <span className="text-yellow-400">
+                🤖 {stats.perIp.filter(r => detectBot(r.user_agent).isBot).length} bots
+              </span>
+            </div>
           </div>
           <div className="overflow-x-auto">
             <table className="w-full text-sm">
@@ -119,6 +149,7 @@ export default async function AdminPage() {
                 <tr className="border-b border-white/5 text-white/40 text-xs">
                   <th className="text-left px-5 py-2.5 font-medium">IP (hashed)</th>
                   <th className="text-left px-5 py-2.5 font-medium">Country</th>
+                  <th className="text-left px-5 py-2.5 font-medium">Type</th>
                   <th className="text-left px-5 py-2.5 font-medium">Visits</th>
                   <th className="text-left px-5 py-2.5 font-medium">Last seen</th>
                   <th className="text-left px-5 py-2.5 font-medium hidden sm:table-cell">Browser</th>
@@ -131,6 +162,20 @@ export default async function AdminPage() {
                     <td className="px-5 py-3 font-mono text-purple text-xs">{row.ip_hash}</td>
                     <td className="px-5 py-3 text-center text-base" title={row.country ?? "Unknown"}>
                       {row.country ? toFlag(row.country) : <span className="text-white/20 text-xs">—</span>}
+                    </td>
+                    <td className="px-5 py-3">
+                      {(() => {
+                        const { isBot, label } = detectBot(row.user_agent);
+                        return (
+                          <span className={`text-[10px] px-2 py-0.5 rounded-full font-medium ${
+                            isBot
+                              ? "bg-yellow-500/15 text-yellow-400 border border-yellow-500/20"
+                              : "bg-green-500/15 text-green-400 border border-green-500/20"
+                          }`}>
+                            {isBot ? `🤖 ${label}` : "👤 Human"}
+                          </span>
+                        );
+                      })()}
                     </td>
                     <td className="px-5 py-3">
                       <span className="bg-purple/20 text-purple text-xs px-2 py-0.5 rounded-full">
