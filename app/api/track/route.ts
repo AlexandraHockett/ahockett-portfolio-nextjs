@@ -1,6 +1,6 @@
 import { NextRequest, NextResponse } from "next/server";
 import { createHash } from "crypto";
-import { supabaseAdmin } from "@/lib/supabaseAdmin";
+import { getSupabaseAdmin } from "@/lib/supabaseAdmin";
 
 export async function POST(req: NextRequest) {
   try {
@@ -17,7 +17,7 @@ export async function POST(req: NextRequest) {
 
     const userAgent = req.headers.get("user-agent") || "";
 
-    await supabaseAdmin.from("portfolio_visits").insert({
+    await getSupabaseAdmin().from("portfolio_visits").insert({
       ip_hash: ipHash,
       user_agent: userAgent,
     });

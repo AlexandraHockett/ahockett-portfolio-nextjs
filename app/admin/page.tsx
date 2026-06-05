@@ -1,35 +1,35 @@
 import { cookies } from "next/headers";
 import { redirect } from "next/navigation";
-import { supabaseAdmin } from "@/lib/supabaseAdmin";
+import { getSupabaseAdmin } from "@/lib/getSupabaseAdmin()";
 
 export const dynamic = "force-dynamic";
 
 async function getStats() {
-  const { count: totalVisits } = await supabaseAdmin
+  const { count: totalVisits } = await getSupabaseAdmin()
     .from("portfolio_visits")
     .select("*", { count: "exact", head: true });
 
-  const { data: ipData } = await supabaseAdmin
+  const { data: ipData } = await getSupabaseAdmin()
     .from("portfolio_visits")
     .select("ip_hash");
   const uniqueIPs = new Set(ipData?.map((r) => r.ip_hash)).size;
 
   const todayStart = new Date();
   todayStart.setHours(0, 0, 0, 0);
-  const { count: todayVisits } = await supabaseAdmin
+  const { count: todayVisits } = await getSupabaseAdmin()
     .from("portfolio_visits")
     .select("*", { count: "exact", head: true })
     .gte("created_at", todayStart.toISOString());
 
   const weekStart = new Date();
   weekStart.setDate(weekStart.getDate() - 7);
-  const { count: weekVisits } = await supabaseAdmin
+  const { count: weekVisits } = await getSupabaseAdmin()
     .from("portfolio_visits")
     .select("*", { count: "exact", head: true })
     .gte("created_at", weekStart.toISOString());
 
   // One row per unique IP — most recent visit + total count per IP
-  const { data: allVisits } = await supabaseAdmin
+  const { data: allVisits } = await getSupabaseAdmin()
     .from("portfolio_visits")
     .select("ip_hash, user_agent, created_at")
     .order("created_at", { ascending: false });
