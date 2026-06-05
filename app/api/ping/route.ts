@@ -28,14 +28,25 @@ export async function POST(req: NextRequest) {
 
     const country = req.headers.get("x-vercel-ip-country") || null;
 
-    await getSupabaseAdmin().from("portfolio_visits").insert({
+    const { error } = await getSupabaseAdmin().from("portfolio_visits").insert({
       ip_hash: ipHash,
       user_agent: userAgent,
       country,
     });
 
+    if (error) {
+      console.error("[ping] Supabase insert error:", error.message);
+      return NextResponse.json({ ok: false, error: error.message }, { status: 500 });
+    }
+
     return NextResponse.json({ ok: true });
-  } catch {
-    return NextResponse.json({ ok: false });
+  } catch (err) {
+    console.error("[ping] Unexpected error:", err);
+    return NextResponse.json({ ok: false }, { status: 500 });
   }
+}
+
+// GET — quick health check to confirm endpoint is alive
+export async function GET() {
+  return NextResponse.json({ ok: true, endpoint: "ping" });
 }
