@@ -1,5 +1,4 @@
 import Skills from "@/components/Skills";
-import PageTracker from "@/components/PageTracker";
 import Certificates from "@/components/Certificates";
 import Experience from "@/components/Experience";
 import Footer from "@/components/Footer";
@@ -21,7 +20,6 @@ export default function Home() {
         <Footer />
       </div>
       <ZaraCompanion />
-      <PageTracker />
     </main>
   );
 }
