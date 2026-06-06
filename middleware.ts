@@ -3,7 +3,11 @@ import { NextRequest, NextResponse } from "next/server";
 const BOT_UA = /HeadlessChrome|Googlebot|bingbot|bot|crawler|spider|python|curl|wget|node-fetch|GPTBot|ClaudeBot|SemrushBot|AhrefsBot|ByteSpider/i;
 
 export async function middleware(req: NextRequest) {
-  if (req.nextUrl.pathname === "/") {
+  if (
+    req.nextUrl.pathname === "/" &&
+    !req.headers.get("RSC") &&
+    !req.headers.get("Next-Router-Prefetch")
+  ) {
     const userAgent = req.headers.get("user-agent") || "";
 
     if (!BOT_UA.test(userAgent)) {
