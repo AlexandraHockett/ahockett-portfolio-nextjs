@@ -71,6 +71,22 @@ export const gridItems = [
 
 export const projects = [
   {
+    id: 8,
+    title: "Forma — AI Personal Fitness Coach",
+    des: "Full-stack PWA built and iterated with real family beta testers. Gemini generates a fully personalised workout plan on onboarding (responseSchema). AI Coach has 7 function-calling tools — swap exercises, adapt for injuries, mark workouts, add notes. PWA with Web Push (VAPID), family leaderboard, group chat with @mentions, and post-session AI analysis.",
+    img: "/forma.png",
+    iconLists: [
+      "https://skillicons.dev/icons?i=nextjs",
+      "https://skillicons.dev/icons?i=ts",
+      "https://skillicons.dev/icons?i=tailwind",
+      "https://skillicons.dev/icons?i=prisma",
+      "https://skillicons.dev/icons?i=supabase",
+      "https://skillicons.dev/icons?i=vercel",
+    ],
+    link: "https://forma-aiapp.vercel.app",
+    demoLabel: "Demo profile · PIN 1234 · resets every 24h",
+  },
+  {
     id: 0,
     title: "JobAgent AI — Personal Career Assistant",
     des: "Full-stack AI-powered personal career assistant. Features automatic CV matching with score breakdown, AI-tailored CV generation preserving original design, streaming cover letter generation, LinkedIn profile optimizer, and mock interview questions — all powered by Claude AI. Built for personal use with authenticated access.",
@@ -131,22 +147,6 @@ export const projects = [
       "https://skillicons.dev/icons?i=framer",
     ],
     link: "https://vidmind-studio.vercel.app",
-  },
-  {
-    id: 8,
-    title: "Forma — AI Personal Fitness Coach",
-    des: "Full-stack PWA built and iterated with real family beta testers. Gemini generates a fully personalised workout plan on onboarding (responseSchema). AI Coach has 7 function-calling tools — swap exercises, adapt for injuries, mark workouts, add notes. PWA with Web Push (VAPID), family leaderboard, group chat with @mentions, and post-session AI analysis.",
-    img: "/forma.png",
-    iconLists: [
-      "https://skillicons.dev/icons?i=nextjs",
-      "https://skillicons.dev/icons?i=ts",
-      "https://skillicons.dev/icons?i=tailwind",
-      "https://skillicons.dev/icons?i=prisma",
-      "https://skillicons.dev/icons?i=supabase",
-      "https://skillicons.dev/icons?i=vercel",
-    ],
-    link: "https://forma-aiapp.vercel.app",
-    demoLabel: "Demo profile · PIN 1234 · resets every 24h",
   },
   {
     id: 2,
