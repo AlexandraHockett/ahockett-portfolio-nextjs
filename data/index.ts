@@ -100,7 +100,7 @@ export const projects = [
       "https://skillicons.dev/icons?i=postgres",
       "https://skillicons.dev/icons?i=vercel",
     ],
-    link: "https://job-agent-ahockett.vercel.app/dashboard",
+    link: "https://job-agent-ahockett.vercel.app",
   },
   {
     id: 1,
