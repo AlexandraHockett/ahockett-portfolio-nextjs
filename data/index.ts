@@ -91,7 +91,6 @@ export const projects = [
     title: "JobAgent AI — Personal Career Assistant",
     des: "Full-stack AI-powered personal career assistant. Features automatic CV matching with score breakdown, AI-tailored CV generation preserving original design, streaming cover letter generation, LinkedIn profile optimizer, and mock interview questions — all powered by Claude AI. Built for personal use with authenticated access.",
     img: "/jobagent.jpg",
-    isPrivate: true,
     iconLists: [
       "https://skillicons.dev/icons?i=nextjs",
       "https://skillicons.dev/icons?i=react",
@@ -101,7 +100,7 @@ export const projects = [
       "https://skillicons.dev/icons?i=postgres",
       "https://skillicons.dev/icons?i=vercel",
     ],
-    link: "https://job-agent-ahockett.vercel.app",
+    link: "https://job-agent-ahockett.vercel.app/dashboard",
   },
   {
     id: 1,
