@@ -14,7 +14,7 @@ const RecentProjects = () => {
 
       {/* ── Mobile layout (hidden on md+) ── */}
       <div className="md:hidden flex flex-col gap-5 mt-10">
-        {projects.map(({ id, title, des, img, isVideo, videoSrc, isPrivate, iconLists, link }) => {
+        {projects.map(({ id, title, des, img, isVideo, videoSrc, isPrivate, iconLists, link, demoLabel }) => {
           const card = (
             <div className="w-full rounded-2xl bg-[#0d0f1f] border border-white/10 overflow-hidden">
               <div className="relative w-full h-48 bg-[#13162d] overflow-hidden">
@@ -52,11 +52,16 @@ const RecentProjects = () => {
                       </div>
                     ))}
                   </div>
-                  <div className="flex items-center gap-1.5 text-purple text-xs font-medium">
-                    {isPrivate ? (
-                      <><span>Private</span><FaLock size={10} color="#CBACF9" /></>
-                    ) : (
-                      <><span>Live Site</span><FaLocationArrow size={10} color="#CBACF9" /></>
+                  <div className="flex flex-col items-end gap-1">
+                    <div className="flex items-center gap-1.5 text-purple text-xs font-medium">
+                      {isPrivate ? (
+                        <><span>Private</span><FaLock size={10} color="#CBACF9" /></>
+                      ) : (
+                        <><span>{demoLabel ? "Try Demo" : "Live Site"}</span><FaLocationArrow size={10} color="#CBACF9" /></>
+                      )}
+                    </div>
+                    {demoLabel && (
+                      <span className="text-[9px] text-white/30 leading-tight text-right">{demoLabel}</span>
                     )}
                   </div>
                 </div>
@@ -77,7 +82,7 @@ const RecentProjects = () => {
       {/* ── Desktop layout (hidden on mobile) ── */}
       <div className="hidden md:flex flex-wrap items-center justify-center p-4 gap-x-24 gap-y-8 mt-10">
         {projects.map(
-          ({ id, title, des, img, isVideo, videoSrc, isPrivate, iconLists, link }) => (
+          ({ id, title, des, img, isVideo, videoSrc, isPrivate, iconLists, link, demoLabel }) => (
             <div
               key={id}
               className="h-[48rem] flex items-center justify-center w-[570px] mb-24"
@@ -131,21 +136,26 @@ const RecentProjects = () => {
                       </div>
                     ))}
                   </div>
-                  <div className="flex justify-center items-center">
-                    {isPrivate ? (
-                      <>
-                        <p className="flex lg:text-xl md:text-xs text-sm text-purple">
-                          Private Project
-                        </p>
-                        <FaLock className="ms-3" color="#CBACF9" />
-                      </>
-                    ) : (
-                      <>
-                        <p className="flex lg:text-xl md:text-xs text-sm text-purple">
-                          Check Live Site
-                        </p>
-                        <FaLocationArrow className="ms-3" color="#CBACF9" />
-                      </>
+                  <div className="flex flex-col items-end gap-1">
+                    <div className="flex justify-center items-center">
+                      {isPrivate ? (
+                        <>
+                          <p className="flex lg:text-xl md:text-xs text-sm text-purple">
+                            Private Project
+                          </p>
+                          <FaLock className="ms-3" color="#CBACF9" />
+                        </>
+                      ) : (
+                        <>
+                          <p className="flex lg:text-xl md:text-xs text-sm text-purple">
+                            {demoLabel ? "Try Demo" : "Check Live Site"}
+                          </p>
+                          <FaLocationArrow className="ms-3" color="#CBACF9" />
+                        </>
+                      )}
+                    </div>
+                    {demoLabel && (
+                      <span className="text-[10px] text-white/30 leading-tight">{demoLabel}</span>
                     )}
                   </div>
                 </div>

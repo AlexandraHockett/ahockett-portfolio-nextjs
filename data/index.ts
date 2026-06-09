@@ -133,6 +133,22 @@ export const projects = [
     link: "https://vidmind-studio.vercel.app",
   },
   {
+    id: 8,
+    title: "Forma — AI Personal Fitness Coach",
+    des: "Full-stack PWA built and iterated with real family beta testers. Gemini generates a fully personalised workout plan on onboarding (responseSchema). AI Coach has 7 function-calling tools — swap exercises, adapt for injuries, mark workouts, add notes. PWA with Web Push (VAPID), family leaderboard, group chat with @mentions, and post-session AI analysis.",
+    img: "/forma.png",
+    iconLists: [
+      "https://skillicons.dev/icons?i=nextjs",
+      "https://skillicons.dev/icons?i=ts",
+      "https://skillicons.dev/icons?i=tailwind",
+      "https://skillicons.dev/icons?i=prisma",
+      "https://skillicons.dev/icons?i=supabase",
+      "https://skillicons.dev/icons?i=vercel",
+    ],
+    link: "https://forma-aiapp.vercel.app",
+    demoLabel: "Demo profile · PIN 1234 · resets every 24h",
+  },
+  {
     id: 2,
     title: "Coutale Portugal — E-commerce & B2B Platform",
     des: "Full e-commerce platform for Coutale Portugal — a premium wine accessories brand. Includes category filtering, custom product personalisation editor, admin dashboard, Stripe checkout, transactional emails, and support for 3 languages (PT/EN/ES).",
