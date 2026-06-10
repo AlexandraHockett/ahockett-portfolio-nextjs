@@ -3,8 +3,10 @@ import { NextRequest, NextResponse } from "next/server";
 const BOT_UA = /HeadlessChrome|Googlebot|bingbot|bot|crawler|spider|python|curl|wget|node-fetch|GPTBot|ClaudeBot|SemrushBot|AhrefsBot|ByteSpider/i;
 
 export async function middleware(req: NextRequest) {
+  const accept = req.headers.get("accept") || "";
   if (
     req.nextUrl.pathname === "/" &&
+    accept.includes("text/html") &&
     !req.headers.get("RSC") &&
     !req.headers.get("Next-Router-Prefetch")
   ) {
