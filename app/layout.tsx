@@ -19,25 +19,24 @@ const geistMono = localFont({
 });
 
 export const metadata: Metadata = {
-  title:
-    "Alexandra Hockett | Full Stack Developer & AI Integration Specialist | React & Next.js Expert",
+  title: "Alexandra Hockett | Full Stack & AI Developer",
   description:
-    "Full Stack Developer & AI Integration Specialist building production SaaS platforms, e-commerce solutions, and AI-powered applications. Expert in React, Next.js, TypeScript, and modern web technologies.",
+    "Full Stack Developer & AI Specialist building SaaS platforms, e-commerce, and AI-powered apps. Expert in Next.js, React, TypeScript & Claude AI.",
   keywords:
     "full stack developer, AI integration specialist, React developer, Next.js, TypeScript, SaaS, web developer, portfolio, Alexandra Hockett",
   openGraph: {
-    title: "Alexandra Hockett — Full Stack Developer & AI Integration Specialist",
+    title: "Alexandra Hockett — Full Stack & AI Developer",
     description:
-      "Full Stack Developer & AI Integration Specialist portfolio showcasing production SaaS platforms, e-commerce solutions, and AI-powered applications.",
+      "Building production SaaS platforms, e-commerce, and AI-powered apps with Next.js, React, TypeScript & Claude AI.",
     url: "https://alexandrahockett.com",
     siteName: "Alexandra Hockett",
     type: "website",
   },
   twitter: {
     card: "summary_large_image",
-    title: "Alexandra Hockett — Full Stack Developer & AI Integration Specialist",
+    title: "Alexandra Hockett — Full Stack & AI Developer",
     description:
-      "Full Stack Developer & AI Integration Specialist portfolio showcasing production SaaS platforms, e-commerce solutions, and AI-powered applications.",
+      "Building production SaaS platforms, e-commerce, and AI-powered apps with Next.js, React, TypeScript & Claude AI.",
   },
 };
 
