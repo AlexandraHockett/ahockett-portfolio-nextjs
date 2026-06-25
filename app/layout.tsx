@@ -26,10 +26,18 @@ export const metadata: Metadata = {
   keywords:
     "full stack developer, AI integration specialist, React developer, Next.js, TypeScript, SaaS, web developer, portfolio, Alexandra Hockett",
   openGraph: {
-    title: "Alexandra Hockett - Full Stack Developer | AI Integration Specialist",
+    title: "Alexandra Hockett — Full Stack Developer & AI Integration Specialist",
     description:
       "Full Stack Developer & AI Integration Specialist portfolio showcasing production SaaS platforms, e-commerce solutions, and AI-powered applications.",
-    images: [{ url: "/logo.svg" }],
+    url: "https://alexandrahockett.com",
+    siteName: "Alexandra Hockett",
+    type: "website",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Alexandra Hockett — Full Stack Developer & AI Integration Specialist",
+    description:
+      "Full Stack Developer & AI Integration Specialist portfolio showcasing production SaaS platforms, e-commerce solutions, and AI-powered applications.",
   },
 };
 
