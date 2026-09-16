@@ -47,7 +47,7 @@ const BOT_PATTERNS = [
 ];
 
 const detectBot = (ua: string): { isBot: boolean; label: string } => {
-  if (!ua) return { isBot: false, label: "Unknown" };
+  if (!ua) return { isBot: true, label: "No UA" };
   const match = BOT_PATTERNS.find((p) => p.test(ua));
   if (match) {
     const name = ua.match(/([A-Za-z]+[Bb]ot|[A-Za-z]+[Cc]rawler|[A-Za-z]+[Ss]pider)/)?.[0];
@@ -162,7 +162,10 @@ export default async function AdminPage() {
             <h2 className="font-semibold text-sm">Visitors</h2>
             <div className="flex items-center gap-3 text-xs">
               <span className="text-green-400">
-                👤 {stats.perIp.filter(r => !detectBot(r.user_agent).isBot).length} humans
+                👤 {stats.perIp.filter(r => !detectBot(r.user_agent).isBot && !r.is_vpn).length} humans
+              </span>
+              <span className="text-orange-400">
+                🔒 {stats.perIp.filter(r => !detectBot(r.user_agent).isBot && r.is_vpn).length} VPN/hosting
               </span>
               <span className="text-yellow-400">
                 🤖 {stats.perIp.filter(r => detectBot(r.user_agent).isBot).length} bots
