@@ -44,7 +44,20 @@ const BOT_PATTERNS = [
   /pingdom/i, /uptimerobot/i, /gptbot/i, /claudebot/i,
   /bytespider/i, /petalbot/i, /dataforseo/i,
   /HeadlessChrome/i, /node-fetch/i, /vercel/i,
+  /dataprovider/i, /\(compatible;/i,
 ];
+
+// Real browsers auto-update; identical, years-out-of-date versions repeated
+// across many "different" visitors are a canned bot User-Agent, not people.
+const isStaleBrowser = (ua: string): boolean => {
+  const chrome = ua.match(/Chrome\/(\d+)/)?.[1];
+  if (chrome && Number(chrome) < 100) return true;
+  const ios = ua.match(/iPhone OS (\d+)_/)?.[1];
+  if (ios && Number(ios) < 15) return true;
+  const safari = ua.match(/Version\/(\d+)[\d.]*\s+.*Safari/)?.[1];
+  if (safari && Number(safari) < 14) return true;
+  return false;
+};
 
 const detectBot = (ua: string): { isBot: boolean; label: string } => {
   if (!ua) return { isBot: true, label: "No UA" };
@@ -53,6 +66,7 @@ const detectBot = (ua: string): { isBot: boolean; label: string } => {
     const name = ua.match(/([A-Za-z]+[Bb]ot|[A-Za-z]+[Cc]rawler|[A-Za-z]+[Ss]pider)/)?.[0];
     return { isBot: true, label: name || "Bot" };
   }
+  if (isStaleBrowser(ua)) return { isBot: true, label: "Fake UA" };
   return { isBot: false, label: "Human" };
 };
 
